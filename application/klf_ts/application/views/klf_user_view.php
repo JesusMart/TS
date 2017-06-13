@@ -9,11 +9,13 @@
 <h1>
 <?php
 
-foreach ($results as $object) {
+//echo $results;
 
-	echo $object->name . "<br>";
+ foreach ($results as $object) {
 
-}
+ 	echo $object->name . "<br>";
+
+ }
 
 ?>
 </h1>

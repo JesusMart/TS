@@ -5,7 +5,9 @@ class Home_klf_ts extends CI_Controller {
 
 	public function index() {
 
-		$this->load->view('home_klf_ts_view');
+		$data['main_view'] = "home_klf_ts_view";
+
+		$this->load->view('layouts/klf_main', $data);
 
 	}
 
