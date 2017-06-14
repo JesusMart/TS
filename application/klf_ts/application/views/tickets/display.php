@@ -14,10 +14,11 @@
 <ul class="list-group">
 		
 		<h4>Tickets Actions</h4>
-
-		<li class="list-group-item"><a href="">Create Activity</a></li> 
-		<li class="list-group-item"><a href="">Edit Ticket</a></li>
-		<li class="list-group-item"><a href="">Delete Ticket</a></li>
+    
+    
+		<li class="list-group-item"><a href="<?php echo base_url(); ?>klf_history/create/<?php echo $ticket_data->id_ticket; ?>">Create Ticket</a></li>
+		<li class="list-group-item"><a href="<?php echo base_url(); ?>klf_tickets/edit/<?php echo $ticket_data->id_ticket; ?>">Edit Ticket</a></li> 
+		<li class="list-group-item"><a href="<?php echo base_url(); ?>klf_tickets/delete/<?php echo $ticket_data->id_ticket; ?>">Delete Ticket</a></li> 
 
 
 </ul>

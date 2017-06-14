@@ -133,4 +133,4 @@ $autoload['language'] = array();
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array('klf_user_model', 'klf_ticket_model');
+$autoload['model'] = array('klf_user_model', 'klf_ticket_model', 'klf_history_model');

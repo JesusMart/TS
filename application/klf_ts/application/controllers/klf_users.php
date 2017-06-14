@@ -141,11 +141,11 @@ class Klf_users extends CI_Controller {
 
 			$this->session->set_flashdata('login_success', 'You are now logged in');
 
-			$data['main_view'] = "klf_admin_view";
+			// $data['main_view'] = "klf_admin_view";
 
-			$this->load->view('layouts/klf_main', $data);			
+			// $this->load->view('layouts/klf_main', $data);			
 				
-			//redirect('home_klf_ts/index');	
+			redirect('home_klf_ts/index');	
 				
 			} else {
 

@@ -1,13 +1,13 @@
 
 
 
-<h2>Create Ticket</h2>
+<h2>Edit Ticket</h2>
 
 <?php $attributes = array('id' => 'create_form', 'class' => 'form_horizontal'); ?>
 
 <?php echo validation_errors("<p class='bg-danger'>"); ?>
 
-<?php echo form_open('klf_tickets/create', $attributes); ?>
+<?php echo form_open('klf_tickets/edit/'. $ticket_data->id_ticket . '', $attributes); ?>
 
 
 <div class="form-group">
@@ -20,7 +20,7 @@
 
 			'class' => 'form-control',
 			'name' => 'title',
-			'placeholder' => 'Enter Ticket Title'
+			'value' => $ticket_data->title
 
 		);
 
@@ -40,7 +40,8 @@
 		$data = array(
 
 			'class' => 'form-control',
-			'name' => 'description'
+			'name' => 'description',
+			'value' => $ticket_data->description
 
 
 		);
@@ -77,7 +78,7 @@
 
 			'class' => 'btn btn-primary',
 			'name' => 'submit',
-			'value' => 'Create'
+			'value' => 'Update'
 
 		);
 

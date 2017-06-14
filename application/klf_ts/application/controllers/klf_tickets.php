@@ -75,6 +75,52 @@ class Klf_tickets extends CI_Controller {
 	}
 
 
+	public function edit($ticket_id) {
+
+		$this->form_validation->set_rules('title', 'Title', 'trim|required');
+		$this->form_validation->set_rules('description', 'Description', 'trim|required');	
+
+		if($this->form_validation->run() == FALSE) {
+
+			$data['ticket_data'] = $this->klf_ticket_model->get_tickets_info($ticket_id);
+
+			$data['main_view'] = 'tickets/edit_ticket';
+			$this->load->view('layouts/klf_main', $data);
+
+		} else {
+
+			$data = array(
+
+					'requested_by' 	=> $this->session->userdata('user_id'),
+					'title' 		=> $this->input->post('title'),
+					'description' 	=> $this->input->post('description')
+
+
+				);
+
+			if($this->klf_ticket_model->edit_ticket($ticket_id, $data))  {
+
+				$this->session->set_flashdata('ticket_updated','Your Ticket has been updated Successfully!');
+
+				redirect("klf_tickets/index");
+
+			}
+
+		}	
+
+	}    
+    
+    
+    public function delete($ticket_id) {
+
+    	$this->klf_ticket_model->delete_ticket($ticket_id);
+
+				$this->session->set_flashdata('ticket_deleted','Your Ticket has been deleted Successfully!');
+
+				redirect("klf_tickets/index");    	
+
+    }
+    
 
 
 }

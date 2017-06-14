@@ -1,26 +1,26 @@
 
 
 
-<h2>Create Ticket</h2>
+<h2>Create History</h2>
 
 <?php $attributes = array('id' => 'create_form', 'class' => 'form_horizontal'); ?>
 
 <?php echo validation_errors("<p class='bg-danger'>"); ?>
 
-<?php echo form_open('klf_tickets/create', $attributes); ?>
+<?php echo form_open('klf_history/create', $attributes); ?>
 
 
 <div class="form-group">
 	
-	<?php echo form_label('Ticket Title'); ?>
+	<?php echo form_label('Ticket Description'); ?>
 
 	<?php
 
 		$data = array(
 
 			'class' => 'form-control',
-			'name' => 'title',
-			'placeholder' => 'Enter Ticket Title'
+			'name' => 'description',
+			'placeholder' => 'Enter History Description'
 
 		);
 
@@ -33,14 +33,14 @@
 
 <div class="form-group">
 	
-	<?php echo form_label('Ticket Description'); ?>
+	<?php echo form_label('Ticket Date Time'); ?>
 
 	<?php
 
 		$data = array(
 
 			'class' => 'form-control',
-			'name' => 'description'
+			'name' => 'date_time'
 
 
 		);
@@ -50,21 +50,6 @@
 	<?php echo form_textarea($data); ?>
 
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

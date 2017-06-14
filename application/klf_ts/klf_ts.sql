@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 13, 2017 at 09:33 PM
+-- Generation Time: Jun 14, 2017 at 08:29 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -74,6 +74,16 @@ CREATE TABLE `history` (
   `date_time` datetime DEFAULT NULL,
   `description` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `history`
+--
+
+INSERT INTO `history` (`id_history`, `id_ticket`, `id_status`, `date_time`, `description`) VALUES
+(1, 2, 1, '2017-06-14 00:00:00', 'Revision'),
+(2, 2, 2, '2017-06-14 00:00:00', 'Reparacion'),
+(3, 6, 1, '2017-06-14 00:00:00', 'Chequeo'),
+(4, 6, 1, '2017-06-14 00:00:00', 'Alteracion');
 
 -- --------------------------------------------------------
 
@@ -187,7 +197,8 @@ CREATE TABLE `tickets` (
 
 INSERT INTO `tickets` (`id_ticket`, `id_status`, `id_software_property`, `title`, `description`, `id_user(assigned champion)`, `timestamp`, `promise_date`, `completion_date`, `requested_by`, `id_priority`, `id_type_service`, `id_category`, `attachements`, `solution`, `id_sla`) VALUES
 (1, 2, 2, 'Printer Problems', 'Printer is not printing ', 2, '2017-06-12 04:00:00', NULL, NULL, 8, 2, 2, 2, NULL, NULL, 2),
-(2, 2, 2, 'Screen Problems', 'The screen is not showing anything', 2, '2017-06-13 04:00:00', NULL, NULL, 9, 2, 2, 2, NULL, NULL, 2);
+(2, 2, 2, 'Screen Problems', 'The screen is not showing anything', 2, '2017-06-13 04:00:00', NULL, NULL, 9, 2, 2, 2, NULL, NULL, 2),
+(6, 2, 2, 'Stuck paper', 'Stuck paper in the General Printer', NULL, '2017-06-14 17:23:20', NULL, NULL, 9, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -362,7 +373,7 @@ ALTER TABLE `department`
 -- AUTO_INCREMENT for table `history`
 --
 ALTER TABLE `history`
-  MODIFY `id_history` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_history` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `priority`
 --
@@ -387,7 +398,7 @@ ALTER TABLE `status`
 -- AUTO_INCREMENT for table `tickets`
 --
 ALTER TABLE `tickets`
-  MODIFY `id_ticket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_ticket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `type_service`
 --
