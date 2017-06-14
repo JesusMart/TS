@@ -28,7 +28,8 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><a href="<?php echo base_url(); ?>">Home<span class="sr-only">(current)</span></a></li>
-        <li ><a href="<?php echo base_url();?>/klf_users/register">Register<span class="sr-only">(current)</span></a></li>
+        <li ><a href="<?php echo base_url();?>klf_tickets">Tickets<span class="sr-only">(current)</span></a></li>
+        <li ><a href="<?php echo base_url();?>klf_users/register">Register<span class="sr-only">(current)</span></a></li>
           </ul> <!-- Maybe comment the line -->
         </li>   <!-- Maybe comment the line -->
       </ul>
@@ -38,10 +39,17 @@
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </form> -->
+      <?php if($this->session->userdata('logged_in')): ?>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
+
+        
+
+          <li><a href="<?php echo base_url();?>klf_users/logout">Logout</a></li>
+
+        
 
           </ul> <!-- Maybe comment the line -->
+         <?php endif; ?> 
         </li>   <!-- Maybe comment the line -->
       </ul>
     </div><!-- /.navbar-collapse -->

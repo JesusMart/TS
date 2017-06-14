@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 12, 2017 at 09:19 PM
+-- Generation Time: Jun 13, 2017 at 09:33 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -31,6 +31,14 @@ CREATE TABLE `category` (
   `name` varchar(100) DEFAULT NULL,
   `description` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='- Hardware\n- Software\n- Operation\n- Login&Account\n- Development\n- Etc';
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`id_category`, `name`, `description`) VALUES
+(1, 'A', 'A'),
+(2, 'B', 'B');
 
 -- --------------------------------------------------------
 
@@ -63,7 +71,8 @@ CREATE TABLE `history` (
   `id_history` int(11) NOT NULL,
   `id_ticket` int(11) DEFAULT NULL,
   `id_status` int(11) DEFAULT NULL,
-  `date_time` datetime DEFAULT NULL
+  `date_time` datetime DEFAULT NULL,
+  `description` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -78,6 +87,14 @@ CREATE TABLE `priority` (
   `description` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='- High\n- Medium\n- Low';
 
+--
+-- Dumping data for table `priority`
+--
+
+INSERT INTO `priority` (`id_priority`, `name`, `description`) VALUES
+(1, 'A', 'A'),
+(2, 'B', 'B');
+
 -- --------------------------------------------------------
 
 --
@@ -91,6 +108,14 @@ CREATE TABLE `sla` (
   `time_to_resolve` time DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Service level agreement';
 
+--
+-- Dumping data for table `sla`
+--
+
+INSERT INTO `sla` (`id_sla`, `name`, `description`, `time_to_resolve`) VALUES
+(1, 'A', 'A', NULL),
+(2, 'B', 'B', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -103,6 +128,14 @@ CREATE TABLE `software_property` (
   `description` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Software Property';
 
+--
+-- Dumping data for table `software_property`
+--
+
+INSERT INTO `software_property` (`id_software_property`, `name`, `description`) VALUES
+(1, 'A', 'A'),
+(2, 'B', 'B');
+
 -- --------------------------------------------------------
 
 --
@@ -114,6 +147,14 @@ CREATE TABLE `status` (
   `name` varchar(100) DEFAULT NULL,
   `description` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='- Open\n- In Progress\n- In Test\n- Resolved\n- Closed\n- Reopened';
+
+--
+-- Dumping data for table `status`
+--
+
+INSERT INTO `status` (`id_status`, `name`, `description`) VALUES
+(1, 'A', 'A'),
+(2, 'B', 'B');
 
 -- --------------------------------------------------------
 
@@ -128,7 +169,7 @@ CREATE TABLE `tickets` (
   `title` varchar(255) DEFAULT NULL,
   `description` varchar(100) DEFAULT NULL,
   `id_user(assigned champion)` int(11) DEFAULT NULL,
-  `timestamp` timestamp NULL DEFAULT NULL,
+  `timestamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `promise_date` datetime DEFAULT NULL,
   `completion_date` datetime DEFAULT NULL,
   `requested_by` int(11) DEFAULT NULL,
@@ -139,6 +180,14 @@ CREATE TABLE `tickets` (
   `solution` varchar(100) DEFAULT NULL,
   `id_sla` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tickets`
+--
+
+INSERT INTO `tickets` (`id_ticket`, `id_status`, `id_software_property`, `title`, `description`, `id_user(assigned champion)`, `timestamp`, `promise_date`, `completion_date`, `requested_by`, `id_priority`, `id_type_service`, `id_category`, `attachements`, `solution`, `id_sla`) VALUES
+(1, 2, 2, 'Printer Problems', 'Printer is not printing ', 2, '2017-06-12 04:00:00', NULL, NULL, 8, 2, 2, 2, NULL, NULL, 2),
+(2, 2, 2, 'Screen Problems', 'The screen is not showing anything', 2, '2017-06-13 04:00:00', NULL, NULL, 9, 2, 2, 2, NULL, NULL, 2);
 
 -- --------------------------------------------------------
 
@@ -151,6 +200,14 @@ CREATE TABLE `type_service` (
   `name` varchar(100) DEFAULT NULL,
   `description` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='- Incident\n- Problem\n- Change';
+
+--
+-- Dumping data for table `type_service`
+--
+
+INSERT INTO `type_service` (`id_type_service`, `name`, `description`) VALUES
+(1, 'A', 'A'),
+(2, 'B', 'B');
 
 -- --------------------------------------------------------
 
@@ -200,7 +257,9 @@ INSERT INTO `users` (`id_user`, `name`, `last_name`, `id_type_user`, `id_departm
 (2, 'Hilda', 'Granados', 3, 2, '514-601-2372', 'jjmartinez.reynoso@gmail.com', '123', '2017-06-12 17:12:40'),
 (7, 'peter20', 'williams', 3, 2, NULL, 'peter012@gmail.com', '123', '2017-06-12 20:20:32'),
 (8, 'leo', 'Martinez', 3, 2, NULL, 'leonardo.martinez@gmail.com', '123', '2017-06-12 20:55:40'),
-(9, 'Nathy', 'Martinez', 3, 2, NULL, 'nathalia.martinez@gmail.com', '$2y$12$M0g8VjsxyKdcSn.v/vs.qebu/S6NZZOWI1ZKWuZXyKnm0eBUJ0/F.', '2017-06-12 21:16:33');
+(9, 'Nathy', 'Martinez', 3, 2, NULL, 'nathalia.martinez@gmail.com', '$2y$12$M0g8VjsxyKdcSn.v/vs.qebu/S6NZZOWI1ZKWuZXyKnm0eBUJ0/F.', '2017-06-12 21:16:33'),
+(10, 'chucho', 'Reynoso', 3, 2, NULL, 'chucho', '$2y$12$ZCpztRIHF1KUB1j5YqapUupRIM.AWKIPFQh5JXX6C5GbD9NK.BDKK', '2017-06-13 03:29:21'),
+(11, 'leon', 'Martinez', 3, 2, NULL, 'leon.martinez@gmail.com', '$2y$12$l2H8XlpI25FWnWtoV4OWCOt/YH25YAVLIiHb.QCUv6eJ7FqkJpjnq', '2017-06-13 04:08:05');
 
 --
 -- Indexes for dumped tables
@@ -293,7 +352,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id_category` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_category` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `department`
 --
@@ -308,32 +367,32 @@ ALTER TABLE `history`
 -- AUTO_INCREMENT for table `priority`
 --
 ALTER TABLE `priority`
-  MODIFY `id_priority` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_priority` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `sla`
 --
 ALTER TABLE `sla`
-  MODIFY `id_sla` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_sla` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `software_property`
 --
 ALTER TABLE `software_property`
-  MODIFY `id_software_property` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_software_property` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `status`
 --
 ALTER TABLE `status`
-  MODIFY `id_status` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_status` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `tickets`
 --
 ALTER TABLE `tickets`
-  MODIFY `id_ticket` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_ticket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `type_service`
 --
 ALTER TABLE `type_service`
-  MODIFY `id_type_service` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_type_service` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `type_user`
 --
@@ -343,7 +402,7 @@ ALTER TABLE `type_user`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- Constraints for dumped tables
 --
