@@ -23,7 +23,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
+      <!--
       <a class="navbar-brand" href="<?php echo base_url(); ?>"><img class="imagen" width="30" heigth="30" src="https://cdn1.iconfinder.com/data/icons/MetroStation-PNG/128/MB__home.png"></a>
+      -->
+
+      <a class="navbar-brand" href="<?php echo base_url(); ?>"><img class="imagen" width="55" heigth="55" 
+      src="<?php echo base_url(); ?>assets/images/klf_media.jpg"></a>
+
     </div>
 
 
@@ -33,7 +39,9 @@
       <ul class="nav navbar-nav">
         <li class="active"><a href="<?php echo base_url(); ?>">Home<span class="sr-only">(current)</span></a></li>
         <li ><a href="<?php echo base_url();?>klf_tickets">Tickets<span class="sr-only">(current)</span></a></li>
+         <!--
          <li ><a href="<?php echo base_url();?>klf_users/register">Register<span class="sr-only">(current)</span></a></li> 
+         -->
 		  
 		<!-- dropdown -->  
 		  

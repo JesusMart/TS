@@ -58,7 +58,7 @@
 
 			'class' => 'form-control',
 			'name' => 'username',
-			'placeholder' => 'Enter Username'
+			'placeholder' => 'Username'
 
 		);
 
@@ -79,7 +79,7 @@
 
 			'class' => 'form-control',
 			'name' => 'password',
-			'placeholder' => 'Enter Password'
+			'placeholder' => 'Password'
 
 		);
 
@@ -100,7 +100,7 @@
 
 			'class' => 'form-control',
 			'name' => 'confirm_password',
-			'placeholder' => 'Confirm Password'
+			'placeholder' => 'Confirm'
 
 		);
 
