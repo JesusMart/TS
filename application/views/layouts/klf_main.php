@@ -110,7 +110,7 @@
 
   <h4>
   <?php if($this->session->userdata('username')): ?>
-  <?php echo "You are logged in as " . $this->session->userdata('username'); ?> 
+  <?php echo "You are logged in as " . $this->session->userdata('usersname'); ?> 
   <?php endif; ?>
   </h4>
 
