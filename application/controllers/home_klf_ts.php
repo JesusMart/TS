@@ -9,6 +9,8 @@ class Home_klf_ts extends CI_Controller {
 
 		$user_id = $this->session->userdata('user_id');
 
+		$data['history'] = $this->klf_history_model->get_all_history($user_id);
+
 		$data['tickets'] = $this->klf_ticket_model->get_all_tickets($user_id);
 
 	}

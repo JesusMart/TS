@@ -73,7 +73,7 @@ class Klf_ticket_model extends CI_Model {
 
 		$this->db->select('
 
-				history.description,
+				history.description as desc_history,
 				history.date_time,
 				history.id_history as history_id,
 				tickets.title,
@@ -83,8 +83,8 @@ class Klf_ticket_model extends CI_Model {
 
 		$this->db->from('history');
 		$this->db->join('tickets', 'tickets.id_ticket = history.id_ticket');
-		$this->db->where('history.id_ticket', '$ticket_id');
-
+		$this->db->where('history.id_ticket', $ticket_id);
+		
 		if($active == true) {
 
 			$this->db->where('history.id_status', 1);
@@ -94,7 +94,7 @@ class Klf_ticket_model extends CI_Model {
 			$this->db->where('history.id_status', 2);
 
 		}
-
+		
 		$query = $this->db->get();
 
 		if($query->num_rows() < 1) {
@@ -106,6 +106,17 @@ class Klf_ticket_model extends CI_Model {
 		return $query->result();
 
 	}	
+
+
+	public function delete_ticket_history($ticket_id) {
+
+		$this->db->where('id_ticket', $ticket_id);
+
+		$query = $this->db->delete('history');
+
+		return $query;
+
+	}
 
 }
 

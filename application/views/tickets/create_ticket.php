@@ -1,6 +1,4 @@
 
-
-
 <h2>Create Ticket</h2>
 
 <?php $attributes = array('id' => 'create_form', 'class' => 'form_horizontal'); ?>
@@ -50,22 +48,6 @@
 	<?php echo form_textarea($data); ?>
 
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <div class="form-group">

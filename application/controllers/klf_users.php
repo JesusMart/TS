@@ -2,67 +2,6 @@
 
 class Klf_users extends CI_Controller {
 
-	// public function show($user_id) {
-
-	// 	// $this->load->model('klf_user_model');   // It is loaded in the autoload.php in config
-
-	// 	$data['results'] = $this->klf_user_model->get_users($user_id, 'hilda');
-
-	// 	$this->load->view('klf_user_view', $data);
-
-	// 	// foreach ($result as $object) {
-
-	// 	// 	echo $object->name . "<br>";
-
-	// 	// }
-
-	// }
-
-	// public function insert() {
-
-	// 	$name = "Leonardo";
-	// 	$password = "secret";
-	// 	$id_type_user = 3;
-	// 	$id_department = 2;
-
-	// 	$this->klf_user_model->create_users([
-
-	// 		'name' => $name,
-	// 		'password' => $password,
-	// 		'id_type_user' => $id_type_user,
-	// 		'id_department' => $id_department
-
-	// 		]);
-
-	// }
-
-	// public function update() {
-
-	// 	$id = 5;
-
-	// 	$name = "Leo";
-	// 	$password = "not so secret";
-	// 	//$id_type_user = 3;
-	// 	//$id_department = 2;
-
-	// 	$this->klf_user_model->update_users([
-
-	// 		'name' => $name,
-	// 		'password' => $password
-	// 		//'id_type_user' => $id_type_user,
-	// 		//'id_department' => $id_department
-
-	// 		], $id);
-
-	// }	
-
-	// public function delete() {
-
-	// 	$id = 5;
-
-	// 	$this->klf_user_model->delete_users($id);
-
-	// }
 
 	public function register() {
 

@@ -33,6 +33,8 @@ class Klf_tickets extends CI_Controller {
 
 		$data['completed_history'] = $this->klf_ticket_model->get_ticket_history($ticket_id, true);
 
+		$data['not_completed_history'] = $this->klf_ticket_model->get_ticket_history($ticket_id, false);
+
 		$data['ticket_data'] = $this->klf_ticket_model->get_ticket($ticket_id);
 
 		$data['main_view'] = "tickets/display";
@@ -115,11 +117,13 @@ class Klf_tickets extends CI_Controller {
     
     public function delete($ticket_id) {
 
+    	$this->klf_ticket_model->delete_ticket_history($ticket_id);
+
     	$this->klf_ticket_model->delete_ticket($ticket_id);
 
-				$this->session->set_flashdata('ticket_deleted','Your Ticket has been deleted Successfully!');
+		$this->session->set_flashdata('ticket_deleted','Your Ticket has been deleted Successfully!');
 
-				redirect("klf_tickets/index");    	
+		redirect("klf_tickets/index");    	
 
     }
     

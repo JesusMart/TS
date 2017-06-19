@@ -1,48 +1,35 @@
-<h1>History Display View</h1>
 
-<table class="table table-bordered">
+<div class="col-xs-9">	
 
-	<thead>
-		<tr>
-			<th>
-				History Description
-			</th>			
-			<th>
-				History Date Time
-			</th>
-			<th>
-				History Id Status
-			</th>			
-		</tr>
-	</thead>
-	<tbody>
+<h1><?php echo $history->description ?></h1>	
+	
+<p>Project Title:<?php echo $ticket_name ?></p>	
+	
+<p>Created: <?php echo $history->date_time ?></p>	
 
+<p>Status: <?php echo $history->id_status ?></p>		
+
+<h4>Description</h4>
+	
+<p class="history-description">
+	
+<?php echo $history->description ?>
+	
+</p>	
+	
+</div>	
+
+<div class="col-xs-3 pull-right">
+<ul class="list-group">
 		
-		
-		
-
-		<tr>	
-			
-		<td>
-			<div class="history-description">
-				<?php echo  $history->description;  ?>
-			</div>	
-			
-			<div class="history-actions">
-				<a href="<?php echo base_url(); ?>klf_history/edit/<?php echo $history->id_history; ?>">Edit</a>
-				
-				<a href="<?php echo base_url(); ?>klf_history/delete/<?php echo $history->id_history; ?>">Deleteee</a>		
-			</div>		
-		</td>
-		<td><?php echo  $history->date_time;  ?></td>
-		<td><?php echo  $history->id_status;  ?></td>
+		<h4>History Actions</h4>
+    
+    
+		<li class="list-group-item"><a href="<?php echo base_url(); ?>klf_history/edit/<?php echo $history->id_history; ?>">Edit</a></li>
+		<li class="list-group-item"><a href="<?php echo base_url(); ?>klf_history/delete/<?php echo $history->id_ticket; ?>/<?php echo $history->id_history; ?>">Delete</a></li> 
+		<li class="list-group-item"><a href="<?php echo base_url();?>klf_history/mark_complete/<?php echo $history->id_history; ?>">Mark Complete</a></li> 
+		<li class="list-group-item"><a href="<?php echo base_url();?>klf_history/mark_incomplete/<?php echo $history->id_history; ?>">Mark Incomplete</a></li>
 
 
-		</tr>
-
-
-
-		
-
-	</tbody>
-</table>
+</ul>
+</div>

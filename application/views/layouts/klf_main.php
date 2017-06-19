@@ -4,8 +4,10 @@
 	<meta charset ="UTF-8">
 	<title>Document</title>
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/custom.css">
 	<script src="<?php echo base_url(); ?>assets/js/jquery.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
+	<script src="<?php echo base_url(); ?>assets/js-webshim/minified/polyfiller.js"></script>
 </head>
 <body>
 
@@ -29,7 +31,27 @@
       <ul class="nav navbar-nav">
         <li class="active"><a href="<?php echo base_url(); ?>">Home<span class="sr-only">(current)</span></a></li>
         <li ><a href="<?php echo base_url();?>klf_tickets">Tickets<span class="sr-only">(current)</span></a></li>
-        <li ><a href="<?php echo base_url();?>klf_users/register">Register<span class="sr-only">(current)</span></a></li>
+         <li ><a href="<?php echo base_url();?>klf_users/register">Register<span class="sr-only">(current)</span></a></li> 
+		  
+		<!-- dropdown -->  
+		  
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li ><a href="<?php echo base_url();?>klf_users/register">Sign up-Users<span class="sr-only">(current)</span></a></li>
+            <li><a href="#">Departaments</a></li>
+            <li><a href="#">Soft.Property</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Types</a></li>
+			<li><a href="#">Categories</a></li>  
+            <li><a href="#">Priorities</a></li>
+			<li><a href="#">Status</a></li>  			  
+            <li role="separator" class="divider"></li>
+
+		  
+		  
+		<!--  dropdown    -->    
+		  
           </ul> <!-- Maybe comment the line -->
         </li>   <!-- Maybe comment the line -->
       </ul>
@@ -39,17 +61,26 @@
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </form> -->
-      <?php if($this->session->userdata('logged_in')): ?>
-      <ul class="nav navbar-nav navbar-right">
+          <?php if($this->session->userdata('logged_in')): ?>
 
-        
 
-          <li><a href="<?php echo base_url();?>klf_users/logout">Logout</a></li>
+            <ul class="nav navbar-nav navbar-right">
 
-        
+              <li><a href="<?php echo base_url();?>klf_users/logout">Logout</a></li>
 
-          </ul> <!-- Maybe comment the line -->
-         <?php endif; ?> 
+            </ul> <!-- Maybe comment the line -->
+
+          <?php else: ?>
+
+            <ul class="nav navbar-nav navbar-right">
+
+              <li><a href="#">Login</a></li>
+
+            </ul> <!-- Maybe comment the line -->
+
+
+
+        <?php endif; ?> 
         </li>   <!-- Maybe comment the line -->
       </ul>
     </div><!-- /.navbar-collapse -->

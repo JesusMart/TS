@@ -12,6 +12,17 @@ class Klf_history_model extends CI_Model {
 
 	}
 	
+	public function get_all_history($user_id) {
+
+		$this->db->where('requested_by', $user_id);
+		$this->db->join('history', 'tickets.id_ticket = history.id_ticket');
+		$query = $this->db->get('tickets');
+
+		return $query->result();
+
+	}
+
+
 	public function create_history($data) {
 
 		$query = $this->db->insert('history', $data);
@@ -62,6 +73,32 @@ class Klf_history_model extends CI_Model {
 
 	}
 	
+ 	public function delete_history($history_id) {
+		
+		$this->db->where('id_history', $history_id);
+		$this->db->delete('history');
+		
+	}	 
+
+ 	public function mark_history_complete($history_id) {
+		
+		$this->db->set('id_status', 2);
+		$this->db->where('id_history', $history_id);
+		$this->db->update('history');
+
+		return true;
+		
+	}	 	
+	
+ 	public function mark_history_incomplete($history_id) {
+		
+		$this->db->set('id_status', 1);
+		$this->db->where('id_history', $history_id);
+		$this->db->update('history');
+
+		return true;
+		
+	}	 		
 	
 
 }

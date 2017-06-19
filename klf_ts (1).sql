@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-06-2017 a las 06:12:48
+-- Tiempo de generación: 19-06-2017 a las 06:55:53
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 7.0.8
 
@@ -80,12 +80,10 @@ CREATE TABLE `history` (
 --
 
 INSERT INTO `history` (`id_history`, `id_ticket`, `id_status`, `date_time`, `description`) VALUES
-(1, 2, 1, '2017-06-14 00:00:00', 'Revision'),
-(2, 2, 2, '2017-06-14 00:00:00', 'Reparacion'),
-(3, 6, 1, '2017-06-14 00:00:00', 'Chequeo'),
-(4, 6, 1, '2017-06-14 00:00:00', 'Alteracion'),
-(5, 2, 1, '2017-06-14 00:00:00', 'Prueba2'),
-(6, 1, NULL, '2017-06-23 00:00:00', 'Prueba1');
+(22, 9, 2, '2017-06-14 00:00:00', 'Charge'),
+(23, 8, 1, '2017-06-21 00:00:00', 'Received'),
+(24, 8, 2, '2017-06-19 00:00:00', 'Detailed'),
+(25, 8, 2, '2017-06-10 00:00:00', 'Contract');
 
 -- --------------------------------------------------------
 
@@ -198,9 +196,8 @@ CREATE TABLE `tickets` (
 --
 
 INSERT INTO `tickets` (`id_ticket`, `id_status`, `id_software_property`, `title`, `description`, `id_user(assigned champion)`, `timestamp`, `promise_date`, `completion_date`, `requested_by`, `id_priority`, `id_type_service`, `id_category`, `attachements`, `solution`, `id_sla`) VALUES
-(1, 2, 2, 'Printer Problems', 'Printer is not printing ', 2, '2017-06-12 04:00:00', NULL, NULL, 8, 2, 2, 2, NULL, NULL, 2),
-(2, 2, 2, 'Screen Problems', 'The screen is not showing anything', 2, '2017-06-13 04:00:00', NULL, NULL, 9, 2, 2, 2, NULL, NULL, 2),
-(6, 2, 2, 'Stuck paper', 'Stuck paper in the General Printer', NULL, '2017-06-14 17:23:20', NULL, NULL, 9, NULL, NULL, NULL, NULL, NULL, NULL);
+(8, NULL, NULL, 'Printer Error', 'The printer is not printing', NULL, '2017-06-15 17:48:22', NULL, NULL, 9, NULL, NULL, NULL, NULL, NULL, NULL),
+(9, NULL, NULL, 'Screen Damaged', 'The screen is black since yesterday', NULL, '2017-06-16 03:53:36', NULL, NULL, 9, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -375,7 +372,7 @@ ALTER TABLE `department`
 -- AUTO_INCREMENT de la tabla `history`
 --
 ALTER TABLE `history`
-  MODIFY `id_history` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_history` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT de la tabla `priority`
 --
@@ -400,7 +397,7 @@ ALTER TABLE `status`
 -- AUTO_INCREMENT de la tabla `tickets`
 --
 ALTER TABLE `tickets`
-  MODIFY `id_ticket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_ticket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT de la tabla `type_service`
 --

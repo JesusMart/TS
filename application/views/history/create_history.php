@@ -76,3 +76,10 @@
 
 
 <?php echo form_close(); ?>
+
+<script>
+
+	webshims.setOptions('forms-ext', {types: 'date'});
+	webshims.polyfill('forms forms-ext');
+
+</script>	

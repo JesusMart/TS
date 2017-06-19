@@ -41,7 +41,35 @@
 
 <?php if(isset($tickets)): ?>
 
-<h1>Tickets</h1>
+<div class="panel panel-primary">
+<div class="panel-heading"><h3>Tickets</h3></div>	
+
+<div class="panel-body">		
+	
+<ul class="list-group">
+		<?php foreach($tickets as $ticket): ?>
+		<li class="list-group-item"><a href="<?php echo base_url(); ?>klf_tickets/display/<?php echo $ticket->id_ticket ?>">
+		
+			<?php echo  $ticket->title;  ?>
+		
+		</a>
+
+		</li>
+	
+		<?php endforeach; ?>	
+
+
+
+<?php endif; ?>
+
+</ul>		
+</div>
+</div>
+
+
+<?php if(isset($history)): ?>
+
+<h1>History</h1>
 
 
 <table class="table table-bordered">
@@ -49,10 +77,10 @@
 	<thead>
 		<tr>
 			<th>
-				Ticket Title				
+				History Description				
 			</th>			
 			<th>
-				Ticket Description
+				History Date Time 
 			</th>
 		</tr>
 	</thead>
@@ -60,13 +88,13 @@
 
 		
 		
-		<?php foreach($tickets as $ticket): ?>
+		<?php foreach($history as $hist): ?>
 
 		<tr>	
 
-		<td><?php echo  $ticket->title;  ?></td>
-		<td><?php echo  $ticket->description;  ?></td>
-		<td><a href="<?php echo base_url(); ?>klf_tickets">View</a></td>
+		<td><?php echo  $hist->description;  ?></td>
+		<td><?php echo  $hist->date_time;  ?></td>
+		<td><a href="<?php echo base_url(); ?>klf_history/display/<?php echo $hist->id_history ?>">View</a></td>
 
 		</tr>
 

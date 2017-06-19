@@ -20,7 +20,8 @@
 
 			'class' => 'form-control',
 			'name' => 'first_name',
-			'placeholder' => 'Enter First Name'
+			'placeholder' => 'Enter First Name',
+			'value' => set_value('first_name')
 
 		);
 
@@ -41,7 +42,8 @@
 
 			'class' => 'form-control',
 			'name' => 'last_name',
-			'placeholder' => 'Enter Last Name'
+			'placeholder' => 'Enter Last Name',
+			'value' => set_value('last_name')
 
 		);
 
@@ -62,7 +64,8 @@
 
 			'class' => 'form-control',
 			'name' => 'email',
-			'placeholder' => 'Enter Your Email'
+			'placeholder' => 'Enter Your Email',
+			'value' => set_value('email')
 
 		);
 
@@ -84,7 +87,8 @@
 
 			'class' => 'form-control',
 			'name' => 'username',
-			'placeholder' => 'Enter Username'
+			'placeholder' => 'Enter Username',
+			'value' => set_value('username')
 
 		);
 

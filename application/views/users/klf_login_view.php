@@ -1,8 +1,12 @@
 <?php if($this->session->userdata('logged_in')): ?>
 
+<!--  Btn Logout
 <h2>Logout</h2>
+  Btn Logout -->
 
+<!--  Btn Logout
 <?php echo form_open('klf_users/logout'); ?>
+  Btn Logout -->
 
 <p>
 <?php if($this->session->userdata('username')): ?>
@@ -10,6 +14,8 @@
 <?php echo "You are logged in as " . $this->session->userdata('username'); ?>	
 <?php endif; ?>
 </p>
+
+<!--  Btn Logout
 <?php
 
 	$data = array(
@@ -25,6 +31,8 @@
 <?php echo form_submit($data); ?>
 
 <?php echo form_close(); ?>
+
+  Btn Logout -->
 
 <?php else: ?>
 
