@@ -40,7 +40,6 @@ class Klf_users extends CI_Controller {
 
 	public function login() {
 
-		//echo $_POST['username'];
 
 		$this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[3]');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[3]');
@@ -56,7 +55,11 @@ class Klf_users extends CI_Controller {
 			
 			$this->session->set_flashdata($data);
 			
-			redirect('home_klf_ts');
+
+			$data['connect_est'] = true;
+			$data['main_view'] = "home_klf_ts_view";
+			$this->load->view('layouts/klf_main', $data);
+			//redirect('home_klf_ts', $data);
 			
 		} else {
 			
@@ -78,7 +81,7 @@ class Klf_users extends CI_Controller {
 
 			$this->session->set_userdata($user_data);	
 
-			$this->session->set_flashdata('login_success', 'You are now logged in');
+			// $this->session->set_flashdata('login_success', 'You are now logged in');  ** It was remove after
 
 			// $data['main_view'] = "klf_admin_view";
 
@@ -104,6 +107,16 @@ class Klf_users extends CI_Controller {
 		redirect('home_klf_ts/index');	
 
 	}	
+
+
+	public function toconnect() {
+
+		$data['connect_est'] = true;
+		$data['main_view'] = "home_klf_ts_view";
+		$this->load->view('layouts/klf_main', $data);
+		//redirect('home_klf_ts/index');	
+
+	}		
 
 }
 

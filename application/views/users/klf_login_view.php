@@ -5,7 +5,7 @@
   Btn Logout -->
 
 <!--  Btn Logout
-<?php echo form_open('klf_users/logout'); ?>
+<?php //echo form_open('klf_users/logout'); ?>
   Btn Logout -->
 
 <p>
@@ -18,19 +18,19 @@
 <!--  Btn Logout
 <?php
 
-	$data = array(
+	//$data = array(
 
-		'class' => 'btn btn-primary',
-		'name' => 'submit',
-		'value' => 'Logout'
+	//	'class' => 'btn btn-primary',
+	//	'name' => 'submit',
+	//	'value' => 'Logout'
 
-	);
+	//);
 
 ?>
 
-<?php echo form_submit($data); ?>
+<?php //echo form_submit($data); ?>
 
-<?php echo form_close(); ?>
+<?php //echo form_close(); ?>
 
   Btn Logout -->
 

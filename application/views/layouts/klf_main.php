@@ -23,8 +23,10 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="<?php echo base_url(); ?>">KLF - TS</a>
+      <a class="navbar-brand" href="<?php echo base_url(); ?>"><img class="imagen" width="30" heigth="30" src="https://cdn1.iconfinder.com/data/icons/MetroStation-PNG/128/MB__home.png"></a>
     </div>
+
+
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -61,7 +63,10 @@
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </form> -->
+
+
           <?php if($this->session->userdata('logged_in')): ?>
+
 
 
             <ul class="nav navbar-nav navbar-right">
@@ -74,7 +79,7 @@
 
             <ul class="nav navbar-nav navbar-right">
 
-              <li><a href="#">Login</a></li>
+              <li><a href="<?php echo base_url();?>klf_users/toconnect">Login</a></li>
 
             </ul> <!-- Maybe comment the line -->
 
@@ -94,7 +99,21 @@
 	
 	<div class="col-xs-3">
 
-	<?php $this->load->view('users/klf_login_view'); ?>
+
+  <h4>
+  <?php if($this->session->userdata('username')): ?>
+  <?php echo "You are logged in as " . $this->session->userdata('username'); ?> 
+  <?php endif; ?>
+  </h4>
+
+
+  <?php if(isset($connect_est) and $connect_est): ?>
+
+       
+
+	     <?php $this->load->view('users/klf_login_view'); ?>
+
+  <?php endif; ?>
 		
 	</div>
 
