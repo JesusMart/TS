@@ -148,6 +148,17 @@ class Klf_ticket_model extends CI_Model {
 
 	}
 
+
+	public function get_software_property() {
+
+		$query = $this->db->get('software_property');
+
+		return $query->result();
+
+	}
+
+
+
 }
 
 ?>

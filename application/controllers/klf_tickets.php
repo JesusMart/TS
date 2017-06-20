@@ -62,8 +62,15 @@ class Klf_tickets extends CI_Controller {
 
 		$this->form_validation->set_rules('title', 'Title', 'trim|required');
 		$this->form_validation->set_rules('description', 'Description', 'trim|required');	
+		$this->form_validation->set_rules('id_software_property', 'id_software_property', 'trim|required');	
+		$this->form_validation->set_rules('id_type_service', 'id_type_service', 'trim|required');	
+		$this->form_validation->set_rules('id_category', 'id_category', 'trim|required');	
+		$this->form_validation->set_rules('id_priority', 'id_priority', 'trim|required');	
+		$this->form_validation->set_rules('attachements', 'attachements', 'trim|required');	
 
 		if($this->form_validation->run() == FALSE) {
+
+			$data['software_property'] = $this->klf_ticket_model->get_software_property();
 
 			$data['main_view'] = 'tickets/create_ticket';
 			$this->load->view('layouts/klf_main', $data);
@@ -72,9 +79,14 @@ class Klf_tickets extends CI_Controller {
 
 			$data = array(
 
-					'requested_by' 	=> $this->session->userdata('user_id'),
-					'title' 		=> $this->input->post('title'),
-					'description' 	=> $this->input->post('description')
+					'requested_by' 			=> $this->session->userdata('user_id'),
+					'title' 				=> $this->input->post('title'),
+					'description' 			=> $this->input->post('description'),
+					'id_software_property'	=> $this->input->post('id_software_property'),
+					'id_type_service'		=> $this->input->post('id_type_service'),
+					'id_category'			=> $this->input->post('id_category'),
+					'id_priority'			=> $this->input->post('id_priority'),
+					'attachements'			=> $this->input->post('attachements')
 
 
 				);

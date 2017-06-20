@@ -1,7 +1,12 @@
 .container {
 
 	 /*background: url(../images/_bg_1.jpg); */
-	 padding: 100px;
+	 padding-top: 80px;
+	 padding-left: 5px;
+	 padding-right: 5px;
+	 margin-left: 10px;
+	 margin-right: 10px;
+	
 
 }
 
