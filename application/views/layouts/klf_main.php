@@ -13,7 +13,7 @@
 
 <!-- Menu -->
 
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -110,18 +110,25 @@
 
   <h4>
   <?php if($this->session->userdata('username')): ?>
-  <?php echo "You are logged in as " . $this->session->userdata('usersname'); ?> 
+  <?php echo "You are logged in as " . $this->session->userdata('username'); ?> 
   <?php endif; ?>
   </h4>
 
 
   <?php if(isset($connect_est) and $connect_est): ?>
 
-       
-
 	     <?php $this->load->view('users/klf_login_view'); ?>
 
   <?php endif; ?>
+
+  <?php if(!isset($left_view)): ?>
+
+      <?php $left_view = "layouts/empty"; ?>
+
+  <?php endif; ?>
+
+
+  <?php $this->load->view($left_view); ?>
 		
 	</div>
 

@@ -17,6 +17,8 @@ class Home_klf_ts extends CI_Controller {
 
 		$data['main_view'] = "home_klf_ts_view";
 
+		$data['left_view'] = "layouts/empty";		
+
 		$this->load->view('layouts/klf_main', $data);
 
 	}

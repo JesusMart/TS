@@ -36,7 +36,7 @@
 
 <?php else: ?>
 
-<h2>Login Form</h2>
+<h6><b><u>Login to your account</u></b></h6>
 
 <?php $attributes = array('id' => 'login_form', 'class' => 'form_horizontal'); ?>
 
@@ -58,7 +58,7 @@
 
 			'class' => 'form-control',
 			'name' => 'username',
-			'placeholder' => 'Username'
+			'placeholder' => 'Enter Username'
 
 		);
 
@@ -79,7 +79,7 @@
 
 			'class' => 'form-control',
 			'name' => 'password',
-			'placeholder' => 'Password'
+			'placeholder' => 'Enter Password'
 
 		);
 
@@ -100,7 +100,7 @@
 
 			'class' => 'form-control',
 			'name' => 'confirm_password',
-			'placeholder' => 'Confirm'
+			'placeholder' => 'Confirm Password'
 
 		);
 

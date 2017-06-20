@@ -24,6 +24,8 @@ class Klf_tickets extends CI_Controller {
 
 		$data['main_view'] = "tickets/index";
 
+		//$data['left_view'] = "tickets/index";
+
 		$this->load->view('layouts/klf_main', $data);
 
 	}

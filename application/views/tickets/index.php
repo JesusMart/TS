@@ -34,7 +34,7 @@
 
 <a class="btn btn-primary pull-right" href="<?php echo base_url(); ?>klf_tickets/create">Create Ticket</a>
 
-<table class="table table-hover">
+<table class="table table-hover table-scrollable">
 
 	<thead>
 		<tr>
