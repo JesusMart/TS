@@ -66,9 +66,27 @@
 
 		);
 
+
 	?>
 
-	<?php echo form_input($data); ?>
+	
+	<?php  
+		$options = []; 
+		
+		//print_r($software_property);
+	    
+        
+	    foreach($software_property as $soft_prop) {
+
+	    	$options[$soft_prop->id_software_property] = $soft_prop->name;
+
+		} 
+		
+	?>
+
+	
+	<?php echo form_dropdown('id_software_property', $options); ?>
+	
 
 </div>
 
@@ -88,7 +106,22 @@
 
 	?>
 
-	<?php echo form_input($data); ?>
+	<?php  
+		$options = []; 
+		
+		//print_r($software_property);
+	    
+        
+	    foreach($type_service as $type) {
+
+	    	$options[$type->id_type_service] = $type->name;
+
+		} 
+		
+	?>	
+
+	<!-- <?php //echo form_input($data); ?> -->
+	<?php echo form_dropdown('id_type_service', $options); ?>	
 
 </div>
 
@@ -108,7 +141,19 @@
 
 	?>
 
-	<?php echo form_input($data); ?>
+	<?php  
+		$options = []; 
+        
+	    foreach($category as $categ) {
+
+	    	$options[$categ->id_category] = $categ->name;
+
+		} 
+		
+	?>		
+
+	<!-- <?php //echo form_input($data); ?> -->
+	<?php echo form_dropdown('id_category', $options); ?>	
 
 </div>
 
@@ -128,7 +173,19 @@
 
 	?>
 
-	<?php echo form_input($data); ?>
+	<?php  
+		$options = []; 
+		
+	    foreach($priority as $prior) {
+
+	    	$options[$prior->id_priority] = $prior->name;
+
+		} 
+		
+	?>			
+
+	<!-- <?php //echo form_input($data); ?> -->
+	<?php echo form_dropdown('id_priority', $options); ?>	
 
 </div>
 

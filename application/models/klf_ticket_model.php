@@ -151,14 +151,48 @@ class Klf_ticket_model extends CI_Model {
 
 	public function get_software_property() {
 
-		$query = $this->db->get('software_property');
+		$this->db->select('
+
+				software_property.id_software_property,
+				software_property.name
+
+			');
+
+		$this->db->from('software_property');
+
+		$query = $this->db->get();
 
 		return $query->result();
 
 	}
 
 
+	public function get_type_service() {
 
-}
+		$query = $this->db->get('type_service');
+
+		return $query->result();
+
+	}
+
+
+	public function get_category() {
+
+		$query = $this->db->get('category');
+
+		return $query->result();
+
+	}	
+
+	public function get_priority() {
+
+		$query = $this->db->get('priority');
+
+		return $query->result();
+
+	}	
+
+
+} 
 
 ?>

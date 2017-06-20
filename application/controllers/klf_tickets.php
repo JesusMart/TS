@@ -8,7 +8,7 @@ class Klf_tickets extends CI_Controller {
 
 		if(!$this->session->userdata('logged_in')) {
 
-			$this->session->set_flashdata('no_access' , 'Sorry you are not alloewd or not logged in');
+			$this->session->set_flashdata('no_access' , 'Sorry you are not allowed or not logged in');
 
 			redirect('home_klf_ts/index');
 
@@ -71,6 +71,9 @@ class Klf_tickets extends CI_Controller {
 		if($this->form_validation->run() == FALSE) {
 
 			$data['software_property'] = $this->klf_ticket_model->get_software_property();
+			$data['type_service'] = $this->klf_ticket_model->get_type_service();
+			$data['category'] = $this->klf_ticket_model->get_category();
+			$data['priority'] = $this->klf_ticket_model->get_priority();
 
 			$data['main_view'] = 'tickets/create_ticket';
 			$this->load->view('layouts/klf_main', $data);
@@ -101,7 +104,7 @@ class Klf_tickets extends CI_Controller {
 
 		}	
 
-	}
+	}  
 
 
 	public function edit($ticket_id) {
