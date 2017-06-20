@@ -78,6 +78,31 @@
 
 
             <ul class="nav navbar-nav navbar-right">
+				
+		<!-- dropdown -->  				
+				
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $this->session->userdata('username'); ?> <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li ><a href="<?php echo base_url();?>klf_users/register">Sign up-Users<span class="sr-only">(current)</span></a></li>
+            <li><a href="#">Departaments</a></li>
+            <li><a href="#">Soft.Property</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Types</a></li>
+			<li><a href="#">Categories</a></li>  
+            <li><a href="#">Priorities</a></li>
+			<li><a href="#">Status</a></li>  			  
+            <li role="separator" class="divider"></li>
+          </ul> <!-- Maybe comment the line -->
+        </li>   <!-- Maybe comment the line -->
+				
+		<!--  dropdown    -->    				
+				
+				
+				
+				
+				
+				
 
               <li><a href="<?php echo base_url();?>klf_users/logout">Logout</a></li>
 
@@ -107,12 +132,13 @@
 	
 	<div class="col-xs-3">
 
-
+  <!--
   <h4>
   <?php if($this->session->userdata('username')): ?>
   <?php echo "You are logged in as " . $this->session->userdata('username'); ?> 
   <?php endif; ?>
   </h4>
+  --> 	
 
 
   <?php if(isset($connect_est) and $connect_est): ?>

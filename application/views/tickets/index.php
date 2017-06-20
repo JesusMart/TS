@@ -32,18 +32,25 @@
 
 </p>
 
+
 <a class="btn btn-primary pull-right" href="<?php echo base_url(); ?>klf_tickets/create">Create Ticket</a>
+
 
 <table class="table table-hover table-scrollable">
 
 	<thead>
 		<tr>
 			<th>
-				Ticket Title				
+				Title				
 			</th>			
+			
+			<!--
 			<th>
 				Ticket Description
+				
 			</th>
+			-->
+			
 		</tr>
 	</thead>
 	<tbody>
@@ -53,10 +60,14 @@
 		<tr>	
 
 		<?php echo "<td><a href='". base_url() ."klf_tickets/display/". $ticket->id_ticket . "'>" . $ticket->title . "</a></td>"; ?>	
-
-		<?php echo "<td>" . $ticket->description . "</td>"; ?>	
-
-		<td><a class="btn btn-danger" href="<?php echo base_url(); ?>klf_tickets/delete/<?php echo $ticket->id_ticket; ?>"><span class="glyphicon glyphicon-remove"></span></a></td>
+		
+		<!--	
+		<?php //echo "<td>" . $ticket->description . "</td>"; ?>	
+		-->
+		
+		<!--	
+		<td><a class="btn btn-danger" href="<?php echo base_url(); ?>klf_tickets/delete/<?php //echo $ticket->id_ticket; ?>"><span class="glyphicon glyphicon-remove"></span></a></td>
+		-->
 
 		</tr>
 

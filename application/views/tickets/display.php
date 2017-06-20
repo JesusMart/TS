@@ -31,9 +31,9 @@
 
 <ul>
 	
-<?php if($completed_history): ?>
+<?php if($all_id_history): ?>
 
-	<?php foreach($completed_history as $history): ?>
+	<?php foreach($all_id_history as $history): ?>
 	
 	<li>
 	<a href="<?php echo base_url();?>klf_history/display/<?php echo $history->history_id; ?>">
@@ -55,36 +55,6 @@
 <?php endif; ?>
 
 </ul>
-
-
-<h3>Completed History</h3>
-
-<ul>
-	
-<?php if($not_completed_history): ?>
-
-	<?php foreach($not_completed_history as $history): ?>
-	
-	<li>
-	<a href="<?php echo base_url();?>klf_history/display/<?php echo $history->history_id; ?>">
-	
-		<?php echo $history->desc_history ?>	
-	
-	</a>	
-	</li>	
-
-
-
-	<?php endforeach; ?>	
-	
-	<?php else: ?>
-	
-	<p>You have not tasks pending</p>
-
-
-<?php endif; ?>
-
-</ul>	
 
 </div>
 

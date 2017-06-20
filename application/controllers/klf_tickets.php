@@ -22,9 +22,9 @@ class Klf_tickets extends CI_Controller {
 
 		$data['tickets'] = $this->klf_ticket_model->get_tickets();
 
-		$data['main_view'] = "tickets/index";
+		$data['main_view'] = "layouts/empty";
 
-		//$data['left_view'] = "tickets/index";
+		$data['left_view'] = "tickets/index";
 
 		$this->load->view('layouts/klf_main', $data);
 
@@ -32,14 +32,25 @@ class Klf_tickets extends CI_Controller {
 
 
 	public function display($ticket_id) {
-
+		
+		/*
 		$data['completed_history'] = $this->klf_ticket_model->get_ticket_history($ticket_id, true);
 
 		$data['not_completed_history'] = $this->klf_ticket_model->get_ticket_history($ticket_id, false);
+		*/
+		
+		$data['all_id_history'] = $this->klf_ticket_model->get_id_ticket_history($ticket_id);
+		
+		
+		
 
 		$data['ticket_data'] = $this->klf_ticket_model->get_ticket($ticket_id);
 
 		$data['main_view'] = "tickets/display";
+		
+		
+		$data['tickets'] = $this->klf_ticket_model->get_tickets();
+		$data['left_view'] = "tickets/index";
 
 		$this->load->view('layouts/klf_main', $data);		
 
@@ -90,9 +101,13 @@ class Klf_tickets extends CI_Controller {
 
 			$data['ticket_data'] = $this->klf_ticket_model->get_tickets_info($ticket_id);
 
+			$data['tickets'] = $this->klf_ticket_model->get_tickets();
+			$data['left_view'] = "tickets/index";
+			
+			
 			$data['main_view'] = 'tickets/edit_ticket';
 			$this->load->view('layouts/klf_main', $data);
-
+			
 		} else {
 
 			$data = array(
