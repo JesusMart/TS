@@ -75,6 +75,8 @@ class Klf_tickets extends CI_Controller {
 			$data['category'] = $this->klf_ticket_model->get_category();
 			$data['priority'] = $this->klf_ticket_model->get_priority();
 
+			$data['tickets'] = $this->klf_ticket_model->get_tickets();
+			$data['left_view'] = "tickets/index";
 			$data['main_view'] = 'tickets/create_ticket';
 			$this->load->view('layouts/klf_main', $data);
 

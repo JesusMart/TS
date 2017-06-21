@@ -18,15 +18,53 @@ class Klf_admin extends CI_Controller {
 	}
 
 
+	public function index_department() {
+
+		$data['departments'] = $this->klf_admin_model->get_departments();
+
+		$data['main_view'] = "layouts/empty";
+
+		$data['left_view'] = "admin/index_departments";
+
+		$this->load->view('layouts/klf_main', $data);
+
+	}
+
+
+	public function display_departments($department_id) {
+		
+		//$data['all_id_history'] = $this->klf_ticket_model->get_id_ticket_history($ticket_id);
+
+		$data['department_data'] = $this->klf_admin_model->get_department($department_id);
+
+		$data['main_view'] = "admin/display_departments";
+
+		$data['departments'] = $this->klf_admin_model->get_departments();
+		$data['left_view'] = "admin/index_departments";
+
+		$this->load->view('layouts/klf_main', $data);		
+
+
+	}
+
+
+
+
+
+
+
+
 
 	public function create_department() {
 
-		$this->form_validation->set_rules('title', 'Title', 'trim|required');
+		$this->form_validation->set_rules('name', 'Name', 'trim|required');
 		$this->form_validation->set_rules('description', 'Description', 'trim|required');	
 
 
 		if($this->form_validation->run() == FALSE) {
 
+			$data['departments'] = $this->klf_admin_model->get_departments();
+			$data['left_view'] = "admin/index_departments";			
 			$data['main_view'] = 'admin/create_department_view';
 			$this->load->view('layouts/klf_main', $data);
 
@@ -34,9 +72,8 @@ class Klf_admin extends CI_Controller {
 
 			$data = array(
 
-					'requested_by' 			=> $this->session->userdata('user_id'),
-					'title' 				=> $this->input->post('title'),
-					'description' 			=> $this->input->post('description')
+					'name' 			=> $this->input->post('name'),
+					'description' 	=> $this->input->post('description')
 
 				);
 
@@ -44,7 +81,7 @@ class Klf_admin extends CI_Controller {
 
 				$this->session->set_flashdata('department_created','Your Department has been created Successfully!');
 
-				redirect("klf_tickets/index");
+				redirect("klf_admin/index_department");
 
 			}
 
@@ -52,5 +89,6 @@ class Klf_admin extends CI_Controller {
 
 	}   
 
+}
 
 ?>		
