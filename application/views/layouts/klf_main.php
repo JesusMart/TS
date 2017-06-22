@@ -55,8 +55,8 @@
             <li role="separator" class="divider"></li>
             <li><a href="<?php echo base_url();?>klf_admin/index_type_service">Type Services</a></li>
 			<li><a href="<?php echo base_url();?>klf_admin/index_category">Categories</a></li>  
-            <li><a href="#">Priorities</a></li>
-			<li><a href="#">Status</a></li>  			  
+            <li><a href="<?php echo base_url();?>klf_admin/index_priority">Priorities</a></li>
+			<li><a href="<?php echo base_url();?>klf_admin/index_status">Status</a></li>  			  
             <li role="separator" class="divider"></li>
 
 		  

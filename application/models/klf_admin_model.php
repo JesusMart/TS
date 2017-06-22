@@ -231,10 +231,117 @@ class Klf_admin_model extends CI_Model {
 
 	/*****************   Methods for Priority  *****************/		
 
+	public function get_priority($id) {
+
+		$this->db->where('id_priority' , $id);
+		$query =$this->db->get('priority');
+
+		return $query->row();
+
+	}
+
+	public function get_priorities() {
+
+		$query = $this->db->get('priority');
+
+		return $query->result();
+
+	}
+
+	public function create_priority_mod($data) {
+
+		$insert_query = $this->db->insert('priority', $data);
+
+		return $insert_query;
+
+	}		
+
+
+	public function edit_priority($priority_id, $data) {
+
+		$this->db->where('id_priority', $priority_id);
+		$this->db->update('priority', $data);
+
+		return true;
+
+	}
+
+	public function delete_priority($priority_id) {
+
+		$this->db->where('id_priority', $priority_id);
+		$this->db->delete('priority');
+
+	}	
+
+
+	public function get_priorities_info($priority_id) {
+
+		$this->db->where('id_priority', $priority_id);
+
+		$get_data = $this->db->get('priority');
+
+		return $get_data->row();
+
+	}
+
 
 	/*****************   Methods for Status  *****************/				
 
+	public function get_status($id) {
 
+		$this->db->where('id_status' , $id);
+		$query =$this->db->get('status');
+
+		return $query->row();
+
+	}
+
+
+	public function get_statuses() {
+
+		$query = $this->db->get('status');
+
+		return $query->result();
+
+	}
+
+	public function create_status_mod($data) {
+
+		$insert_query = $this->db->insert('status', $data);
+
+		return $insert_query;
+
+	}		
+
+
+	public function edit_status($status_id, $data) {
+
+		$this->db->where('id_status', $status_id);
+		$this->db->update('status', $data);
+
+		return true;
+
+	}	
+
+
+	public function delete_status($status_id) {
+
+		$this->db->where('id_status', $status_id);
+		$this->db->delete('status');
+
+	}	
+
+	public function get_statuses_info($status_id) {
+
+		$this->db->where('id_status', $status_id);
+
+		$get_data = $this->db->get('status');
+
+		return $get_data->row();
+
+	}	
+
+	/*********************************************************/					
 
 
 

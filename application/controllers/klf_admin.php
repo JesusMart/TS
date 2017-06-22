@@ -501,8 +501,250 @@ class Klf_admin extends CI_Controller {
 
 	/*****************   Methods for Priority  *****************/		
 
+	public function index_priority() {
+
+		$data['priorities'] = $this->klf_admin_model->get_priorities();
+
+		$data['main_view'] = "layouts/empty";
+
+		$data['left_view'] = "admin/index_priorities";
+
+		$this->load->view('layouts/klf_main', $data);
+
+	}	
+
+
+	public function display_priorities($priority_id) {
+		
+		//$data['all_id_history'] = $this->klf_ticket_model->get_id_ticket_history($ticket_id);
+
+		$data['priority_data'] = $this->klf_admin_model->get_priority($priority_id);
+
+		$data['main_view'] = "admin/display_priorities";
+
+		$data['priorities'] = $this->klf_admin_model->get_priorities();
+		$data['left_view'] = "admin/index_priorities";
+
+		$this->load->view('layouts/klf_main', $data);		
+
+
+	}	
+
+
+	public function create_priority() {
+
+		$this->form_validation->set_rules('name', 'Name', 'trim|required');
+		$this->form_validation->set_rules('description', 'Description', 'trim|required');	
+
+
+		if($this->form_validation->run() == FALSE) {
+
+			$data['priorities'] = $this->klf_admin_model->get_priorities();
+			$data['left_view'] = "admin/index_priorities";			
+			$data['main_view'] = 'admin/create_priority_view';
+			$this->load->view('layouts/klf_main', $data);
+
+		} else {
+
+			$data = array(
+
+					'name' 			=> $this->input->post('name'),
+					'description' 	=> $this->input->post('description')
+
+				);
+
+			if($this->klf_admin_model->create_priority_mod($data))  {
+
+				$this->session->set_flashdata('priority_created','Your Priority has been created Successfully!');
+
+				redirect("klf_admin/index_priority");
+
+			}
+
+		}	
+
+	}   
+
+
+
+	public function edit_priority($priority_id) {
+
+		$this->form_validation->set_rules('name', 'Name', 'trim|required');
+		$this->form_validation->set_rules('description', 'Description', 'trim|required');			
+
+		if($this->form_validation->run() == FALSE) {
+
+			$data['priority_data'] = $this->klf_admin_model->get_priorities_info($priority_id);
+
+			$data['priorities'] = $this->klf_admin_model->get_priorities();
+			$data['left_view'] = "admin/index_priorities";
+			
+			
+			$data['main_view'] = 'admin/edit_priority';
+			$this->load->view('layouts/klf_main', $data);
+			
+		} else {
+
+			$data = array(
+
+					'name' 			=> $this->input->post('name'),
+					'description' 	=> $this->input->post('description')
+
+
+				);
+
+			if($this->klf_admin_model->edit_priority($priority_id, $data))  {
+
+				$this->session->set_flashdata('priority_updated','Your Priority has been updated Successfully!');
+
+				redirect("klf_admin/index_priority");
+
+
+			}
+
+		}	
+
+	}
+
+
+    public function delete_priority($priority_id) {
+
+    	//$this->klf_ticket_model->delete_ticket_history($ticket_id);
+
+    	$this->klf_admin_model->delete_priority($priority_id);
+
+		$this->session->set_flashdata('priority_deleted','Your Priority has been deleted Successfully!');
+
+		redirect("klf_admin/index_priority");    	
+
+    }	
+
+
 
 	/*****************   Methods for Status  *****************/			
+
+
+	public function index_status() {
+
+		$data['statuses'] = $this->klf_admin_model->get_statuses();
+
+		$data['main_view'] = "layouts/empty";
+
+		$data['left_view'] = "admin/index_statuses";
+
+		$this->load->view('layouts/klf_main', $data);
+
+	}	
+
+	public function display_statuses($status_id) {
+		
+		//$data['all_id_history'] = $this->klf_ticket_model->get_id_ticket_history($ticket_id);
+
+		$data['status_data'] = $this->klf_admin_model->get_status($status_id);
+
+		$data['main_view'] = "admin/display_statuses";
+
+		$data['statuses'] = $this->klf_admin_model->get_statuses();
+		$data['left_view'] = "admin/index_statuses";
+
+		$this->load->view('layouts/klf_main', $data);		
+
+
+	}	
+
+
+	public function create_status() {
+
+		$this->form_validation->set_rules('name', 'Name', 'trim|required');
+		$this->form_validation->set_rules('description', 'Description', 'trim|required');	
+
+
+		if($this->form_validation->run() == FALSE) {
+
+			$data['statuses'] = $this->klf_admin_model->get_statuses();
+			$data['left_view'] = "admin/index_statuses";			
+			$data['main_view'] = 'admin/create_status_view';
+			$this->load->view('layouts/klf_main', $data);
+
+		} else {
+
+			$data = array(
+
+					'name' 			=> $this->input->post('name'),
+					'description' 	=> $this->input->post('description')
+
+				);
+
+			if($this->klf_admin_model->create_status_mod($data))  {
+
+				$this->session->set_flashdata('status_created','Your Status has been created Successfully!');
+
+				redirect("klf_admin/index_status");
+
+			}
+
+		}	
+
+	}   
+
+
+	public function edit_status($status_id) {
+
+		$this->form_validation->set_rules('name', 'Name', 'trim|required');
+		$this->form_validation->set_rules('description', 'Description', 'trim|required');			
+
+		if($this->form_validation->run() == FALSE) {
+
+			$data['status_data'] = $this->klf_admin_model->get_statuses_info($status_id);
+
+			$data['statuses'] = $this->klf_admin_model->get_statuses();
+			$data['left_view'] = "admin/index_statuses";
+			
+			
+			$data['main_view'] = 'admin/edit_status';
+			$this->load->view('layouts/klf_main', $data);
+			
+		} else {
+
+			$data = array(
+
+					'name' 			=> $this->input->post('name'),
+					'description' 	=> $this->input->post('description')
+
+
+				);
+
+			if($this->klf_admin_model->edit_status($status_id, $data))  {
+
+				$this->session->set_flashdata('status_updated','Your Status has been updated Successfully!');
+
+				redirect("klf_admin/index_status");
+
+
+			}
+
+		}	
+
+	}
+
+
+    public function delete_status($status_id) {
+
+    	//$this->klf_ticket_model->delete_ticket_history($ticket_id);
+
+    	$this->klf_admin_model->delete_status($status_id);
+
+		$this->session->set_flashdata('status_deleted','Your Status has been deleted Successfully!');
+
+		redirect("klf_admin/index_status");    	
+
+    }	
+
+
+
+
+	/*********************************************************/				
+
 
 
 }
