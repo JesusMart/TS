@@ -3,7 +3,24 @@
 class Klf_users extends CI_Controller {
 
 
+
+
+
 	public function register() {
+
+
+		if(!$this->session->userdata('logged_in') or
+			$this->session->userdata('username') <> "Admin"
+			
+			) {
+
+			$this->session->set_flashdata('no_access' , 'Sorry you are not allowed or not logged in');
+
+			redirect('home_klf_ts/index');
+
+		}
+
+
 
 		$this->form_validation->set_rules('first_name', 'First Name', 'trim|required|min_length[3]');
 		$this->form_validation->set_rules('last_name', 'First Name', 'trim|required|min_length[3]');

@@ -6,7 +6,12 @@ class Klf_admin extends CI_Controller {
 	public function __construct() {
 	parent::__construct()	;
 
-		if(!$this->session->userdata('logged_in')) {
+		if(!$this->session->userdata('logged_in') or   
+			$this->session->userdata('username') <> "Admin"
+
+		      ) {
+
+			
 
 			$this->session->set_flashdata('no_access' , 'Sorry you are not allowed or not logged in');
 
