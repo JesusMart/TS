@@ -18,6 +18,9 @@ class Klf_admin extends CI_Controller {
 	}
 
 
+	/*****************   Methods for Departments *****************/
+
+
 	public function index_department() {
 
 		$data['departments'] = $this->klf_admin_model->get_departments();
@@ -46,13 +49,6 @@ class Klf_admin extends CI_Controller {
 
 
 	}
-
-
-
-
-
-
-
 
 
 	public function create_department() {
@@ -88,6 +84,426 @@ class Klf_admin extends CI_Controller {
 		}	
 
 	}   
+
+
+	public function edit_department($department_id) {
+
+		$this->form_validation->set_rules('name', 'Name', 'trim|required');
+		$this->form_validation->set_rules('description', 'Description', 'trim|required');			
+
+		if($this->form_validation->run() == FALSE) {
+
+			$data['department_data'] = $this->klf_admin_model->get_departments_info($department_id);
+
+			$data['departments'] = $this->klf_admin_model->get_departments();
+			$data['left_view'] = "admin/index_departments";
+			
+			
+			$data['main_view'] = 'admin/edit_department';
+			$this->load->view('layouts/klf_main', $data);
+			
+		} else {
+
+			$data = array(
+
+					'name' 			=> $this->input->post('name'),
+					'description' 	=> $this->input->post('description')
+
+
+				);
+
+			if($this->klf_admin_model->edit_department($department_id, $data))  {
+
+				$this->session->set_flashdata('department_updated','Your Department has been updated Successfully!');
+
+				redirect("klf_admin/index_department");
+
+
+			}
+
+		}	
+
+	}
+
+
+    public function delete_department($department_id) {
+
+    	//$this->klf_ticket_model->delete_ticket_history($ticket_id);
+
+    	$this->klf_admin_model->delete_department($department_id);
+
+		$this->session->set_flashdata('department_deleted','Your Department has been deleted Successfully!');
+
+		redirect("klf_admin/index_department");    	
+
+    }	
+
+
+	/*****************   Methods for Software Property *****************/
+
+	public function index_software_property() {
+
+
+		$data['software_properties'] = $this->klf_admin_model->get_software_properties();
+
+		$data['main_view'] = "layouts/empty";
+
+		$data['left_view'] = "admin/index_software_properties";
+
+		$this->load->view('layouts/klf_main', $data);
+
+	}	
+
+
+	public function display_software_properties($software_property_id) {
+		
+		//$data['all_id_history'] = $this->klf_ticket_model->get_id_ticket_history($ticket_id);
+
+		$data['software_property_data'] = $this->klf_admin_model->get_software_property($software_property_id);
+
+		$data['main_view'] = "admin/display_software_properties";
+
+		$data['software_properties'] = $this->klf_admin_model->get_software_properties();
+		$data['left_view'] = "admin/index_software_properties";
+
+		$this->load->view('layouts/klf_main', $data);		
+
+
+	}
+
+
+
+	public function create_software_property() {
+
+		$this->form_validation->set_rules('name', 'Name', 'trim|required');
+		$this->form_validation->set_rules('description', 'Description', 'trim|required');	
+
+
+		if($this->form_validation->run() == FALSE) {
+
+			$data['software_properties'] = $this->klf_admin_model->get_software_properties();
+			$data['left_view'] = "admin/index_software_properties";			
+			$data['main_view'] = 'admin/create_software_property_view';
+			$this->load->view('layouts/klf_main', $data);
+
+		} else {
+
+			$data = array(
+
+					'name' 			=> $this->input->post('name'),
+					'description' 	=> $this->input->post('description')
+
+				);
+
+			if($this->klf_admin_model->create_software_property_mod($data))  {
+
+				$this->session->set_flashdata('software_property_created','Your Software Property has been created Successfully!');
+
+				redirect("klf_admin/index_software_property");
+
+			}
+
+		}	
+
+	}   
+
+
+	public function edit_software_property($software_property_id) {
+
+		$this->form_validation->set_rules('name', 'Name', 'trim|required');
+		$this->form_validation->set_rules('description', 'Description', 'trim|required');			
+
+		if($this->form_validation->run() == FALSE) {
+
+			$data['software_property_data'] = $this->klf_admin_model->get_software_properties_info($software_property_id);
+
+			$data['software_properties'] = $this->klf_admin_model->get_software_properties();
+			$data['left_view'] = "admin/index_software_properties";
+			
+			
+			$data['main_view'] = 'admin/edit_software_property';
+			$this->load->view('layouts/klf_main', $data);
+			
+		} else {
+
+			$data = array(
+
+					'name' 			=> $this->input->post('name'),
+					'description' 	=> $this->input->post('description')
+
+
+				);
+
+			if($this->klf_admin_model->edit_software_property($software_property_id, $data))  {
+
+				$this->session->set_flashdata('software_property_updated','Your Software Property has been updated Successfully!');
+
+				redirect("klf_admin/index_software_property");
+
+
+			}
+
+		}	
+
+	}
+
+
+    public function delete_software_property($software_property_id) {
+
+    	//$this->klf_ticket_model->delete_ticket_history($ticket_id);
+
+    	$this->klf_admin_model->delete_software_property($software_property_id);
+
+		$this->session->set_flashdata('software_property_deleted','Your Software Property has been deleted Successfully!');
+
+		redirect("klf_admin/index_software_property");    	
+
+    }	
+
+	/*****************   Methods for Type Service  *****************/	
+
+	public function index_type_service() {
+
+		$data['type_services'] = $this->klf_admin_model->get_type_services();
+
+		$data['main_view'] = "layouts/empty";
+
+		$data['left_view'] = "admin/index_type_services";
+
+		$this->load->view('layouts/klf_main', $data);
+
+	}
+
+	
+	public function display_type_services($type_service_id) {
+		
+		//$data['all_id_history'] = $this->klf_ticket_model->get_id_ticket_history($ticket_id);
+
+		$data['type_service_data'] = $this->klf_admin_model->get_type_service($type_service_id);
+
+		$data['main_view'] = "admin/display_type_services";
+
+		$data['type_services'] = $this->klf_admin_model->get_type_services();
+		$data['left_view'] = "admin/index_type_services";
+
+		$this->load->view('layouts/klf_main', $data);		
+
+
+	}
+	
+	
+
+	public function create_type_service() {
+
+		$this->form_validation->set_rules('name', 'Name', 'trim|required');
+		$this->form_validation->set_rules('description', 'Description', 'trim|required');	
+
+
+		if($this->form_validation->run() == FALSE) {
+
+			$data['type_services'] = $this->klf_admin_model->get_type_services();
+			$data['left_view'] = "admin/index_type_services";			
+			$data['main_view'] = 'admin/create_type_service_view';
+			$this->load->view('layouts/klf_main', $data);
+
+		} else {
+
+			$data = array(
+
+					'name' 			=> $this->input->post('name'),
+					'description' 	=> $this->input->post('description')
+
+				);
+
+			if($this->klf_admin_model->create_type_service_mod($data))  {
+
+				$this->session->set_flashdata('type_service_created','Your Type Service has been created Successfully!');
+
+				redirect("klf_admin/index_type_service");
+
+			}
+
+		}	
+
+	}   	
+	
+	
+	public function edit_type_service($type_service_id) {
+
+		$this->form_validation->set_rules('name', 'Name', 'trim|required');
+		$this->form_validation->set_rules('description', 'Description', 'trim|required');			
+
+		if($this->form_validation->run() == FALSE) {
+
+			$data['type_service_data'] = $this->klf_admin_model->get_type_services_info($type_service_id);
+
+			$data['type_services'] = $this->klf_admin_model->get_type_services();
+			$data['left_view'] = "admin/index_type_services";
+			
+			
+			$data['main_view'] = 'admin/edit_type_service';
+			$this->load->view('layouts/klf_main', $data);
+			
+		} else {
+
+			$data = array(
+
+					'name' 			=> $this->input->post('name'),
+					'description' 	=> $this->input->post('description')
+
+
+				);
+
+			if($this->klf_admin_model->edit_type_service($type_service_id, $data))  {
+
+				$this->session->set_flashdata('type_service_updated','Your Type Service has been updated Successfully!');
+
+				redirect("klf_admin/index_type_service");
+
+
+			}
+
+		}	
+
+	}	
+	
+    public function delete_type_service($type_service_id) {
+
+    	//$this->klf_ticket_model->delete_ticket_history($ticket_id);
+
+    	$this->klf_admin_model->delete_type_service($type_service_id);
+
+		$this->session->set_flashdata('type_service_deleted','Your Type Service has been deleted Successfully!');
+
+		redirect("klf_admin/index_type_service");    	
+
+    }	
+	
+
+	/*****************   Methods for Category  *****************/	
+
+	public function index_category() {
+
+		$data['categories'] = $this->klf_admin_model->get_categories();
+
+		$data['main_view'] = "layouts/empty";
+
+		$data['left_view'] = "admin/index_categories";
+
+		$this->load->view('layouts/klf_main', $data);
+
+	}
+
+	public function display_categories($category_id) {
+		
+		//$data['all_id_history'] = $this->klf_ticket_model->get_id_ticket_history($ticket_id);
+
+		$data['category_data'] = $this->klf_admin_model->get_category($category_id);
+
+		$data['main_view'] = "admin/display_categories";
+
+		$data['categories'] = $this->klf_admin_model->get_categories();
+		$data['left_view'] = "admin/index_categories";
+
+		$this->load->view('layouts/klf_main', $data);		
+
+
+	}	
+
+
+	public function create_category() {
+
+		$this->form_validation->set_rules('name', 'Name', 'trim|required');
+		$this->form_validation->set_rules('description', 'Description', 'trim|required');	
+
+
+		if($this->form_validation->run() == FALSE) {
+
+			$data['categories'] = $this->klf_admin_model->get_categories();
+			$data['left_view'] = "admin/index_categories";			
+			$data['main_view'] = 'admin/create_category_view';
+			$this->load->view('layouts/klf_main', $data);
+
+		} else {
+
+			$data = array(
+
+					'name' 			=> $this->input->post('name'),
+					'description' 	=> $this->input->post('description')
+
+				);
+
+			if($this->klf_admin_model->create_category_mod($data))  {
+
+				$this->session->set_flashdata('category_created','Your Category has been created Successfully!');
+
+				redirect("klf_admin/index_category");
+
+			}
+
+		}	
+
+	}   
+
+
+	public function edit_category($category_id) {
+
+		$this->form_validation->set_rules('name', 'Name', 'trim|required');
+		$this->form_validation->set_rules('description', 'Description', 'trim|required');			
+
+		if($this->form_validation->run() == FALSE) {
+
+			$data['category_data'] = $this->klf_admin_model->get_categories_info($category_id);
+
+			$data['categories'] = $this->klf_admin_model->get_categories();
+			$data['left_view'] = "admin/index_categories";
+			
+			
+			$data['main_view'] = 'admin/edit_category';
+			$this->load->view('layouts/klf_main', $data);
+			
+		} else {
+
+			$data = array(
+
+					'name' 			=> $this->input->post('name'),
+					'description' 	=> $this->input->post('description')
+
+
+				);
+
+			if($this->klf_admin_model->edit_category($category_id, $data))  {
+
+				$this->session->set_flashdata('category_updated','Your Category has been updated Successfully!');
+
+				redirect("klf_admin/index_category");
+
+
+			}
+
+		}	
+
+	}
+
+
+    public function delete_category($category_id) {
+
+    	//$this->klf_ticket_model->delete_ticket_history($ticket_id);
+
+    	$this->klf_admin_model->delete_category($category_id);
+
+		$this->session->set_flashdata('category_deleted','Your Category has been deleted Successfully!');
+
+		redirect("klf_admin/index_category");    	
+
+    }	
+
+
+	/*****************   Methods for Priority  *****************/		
+
+
+	/*****************   Methods for Status  *****************/			
+
 
 }
 

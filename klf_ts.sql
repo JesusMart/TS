@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.4
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Jun 20, 2017 at 09:06 PM
--- Server version: 5.7.14
--- PHP Version: 5.6.25
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 22-06-2017 a las 07:40:40
+-- Versión del servidor: 10.1.13-MariaDB
+-- Versión de PHP: 7.0.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `klf_ts`
+-- Base de datos: `klf_ts`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category`
+-- Estructura de tabla para la tabla `category`
 --
 
 CREATE TABLE `category` (
@@ -33,7 +33,7 @@ CREATE TABLE `category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='- Hardware\n- Software\n- Operation\n- Login&Account\n- Development\n- Etc';
 
 --
--- Dumping data for table `category`
+-- Volcado de datos para la tabla `category`
 --
 
 INSERT INTO `category` (`id_category`, `name`, `description`) VALUES
@@ -43,7 +43,7 @@ INSERT INTO `category` (`id_category`, `name`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `department`
+-- Estructura de tabla para la tabla `department`
 --
 
 CREATE TABLE `department` (
@@ -53,18 +53,23 @@ CREATE TABLE `department` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `department`
+-- Volcado de datos para la tabla `department`
 --
 
 INSERT INTO `department` (`id_department`, `name`, `description`) VALUES
-(1, 'IT', 'IT'),
 (2, 'Accounting', 'Accounting'),
-(3, 'Purchasing', 'Purchasing');
+(3, 'Purchasing', 'Purchasing'),
+(4, 'Sales', 'Sales'),
+(5, 'Production', 'Production'),
+(6, 'Warehouse', 'Warehouse'),
+(7, 'Payroll', 'Payroll'),
+(9, 'Security', 'Security'),
+(10, 'Maintenaince', 'Maintenaince');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `history`
+-- Estructura de tabla para la tabla `history`
 --
 
 CREATE TABLE `history` (
@@ -76,7 +81,7 @@ CREATE TABLE `history` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `history`
+-- Volcado de datos para la tabla `history`
 --
 
 INSERT INTO `history` (`id_history`, `id_ticket`, `id_status`, `date_time`, `description`) VALUES
@@ -89,7 +94,7 @@ INSERT INTO `history` (`id_history`, `id_ticket`, `id_status`, `date_time`, `des
 -- --------------------------------------------------------
 
 --
--- Table structure for table `priority`
+-- Estructura de tabla para la tabla `priority`
 --
 
 CREATE TABLE `priority` (
@@ -99,7 +104,7 @@ CREATE TABLE `priority` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='- High\n- Medium\n- Low';
 
 --
--- Dumping data for table `priority`
+-- Volcado de datos para la tabla `priority`
 --
 
 INSERT INTO `priority` (`id_priority`, `name`, `description`) VALUES
@@ -109,7 +114,7 @@ INSERT INTO `priority` (`id_priority`, `name`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sla`
+-- Estructura de tabla para la tabla `sla`
 --
 
 CREATE TABLE `sla` (
@@ -120,7 +125,7 @@ CREATE TABLE `sla` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Service level agreement';
 
 --
--- Dumping data for table `sla`
+-- Volcado de datos para la tabla `sla`
 --
 
 INSERT INTO `sla` (`id_sla`, `name`, `description`, `time_to_resolve`) VALUES
@@ -130,7 +135,7 @@ INSERT INTO `sla` (`id_sla`, `name`, `description`, `time_to_resolve`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `software_property`
+-- Estructura de tabla para la tabla `software_property`
 --
 
 CREATE TABLE `software_property` (
@@ -140,17 +145,18 @@ CREATE TABLE `software_property` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Software Property';
 
 --
--- Dumping data for table `software_property`
+-- Volcado de datos para la tabla `software_property`
 --
 
 INSERT INTO `software_property` (`id_software_property`, `name`, `description`) VALUES
 (1, 'SOFTWARE PROPERTY A', 'SOFTWARE PROPERTY A'),
-(2, 'SOFTWARE PROPERTY B', 'SOFTWARE PROPERTY B');
+(2, 'SOFTWARE PROPERTY B', 'SOFTWARE PROPERTY B'),
+(4, 'SOFTWARE PROPERTY D', 'SOFTWARE PROPERTY D');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `status`
+-- Estructura de tabla para la tabla `status`
 --
 
 CREATE TABLE `status` (
@@ -160,7 +166,7 @@ CREATE TABLE `status` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='- Open\n- In Progress\n- In Test\n- Resolved\n- Closed\n- Reopened';
 
 --
--- Dumping data for table `status`
+-- Volcado de datos para la tabla `status`
 --
 
 INSERT INTO `status` (`id_status`, `name`, `description`) VALUES
@@ -170,7 +176,7 @@ INSERT INTO `status` (`id_status`, `name`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tickets`
+-- Estructura de tabla para la tabla `tickets`
 --
 
 CREATE TABLE `tickets` (
@@ -193,21 +199,21 @@ CREATE TABLE `tickets` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tickets`
+-- Volcado de datos para la tabla `tickets`
 --
 
 INSERT INTO `tickets` (`id_ticket`, `id_status`, `id_software_property`, `title`, `description`, `id_user(assigned champion)`, `timestamp`, `promise_date`, `completion_date`, `requested_by`, `id_priority`, `id_type_service`, `id_category`, `attachements`, `solution`, `id_sla`) VALUES
-(8, NULL, NULL, 'Printer Error', 'The printer is not printing 1111', NULL, '2017-06-15 17:48:22', NULL, NULL, 11, NULL, NULL, NULL, NULL, NULL, NULL),
+(8, NULL, NULL, 'Printer Error', 'The printer is not printing', NULL, '2017-06-15 17:48:22', NULL, NULL, 11, NULL, NULL, NULL, NULL, NULL, NULL),
 (9, NULL, NULL, 'Screen Damaged', 'The screen is black since yesterday', NULL, '2017-06-16 03:53:36', NULL, NULL, 9, NULL, NULL, NULL, NULL, NULL, NULL),
-(22, NULL, NULL, 'Ticket 1 de Leo', 'Ticket 1 de Leo - Description', NULL, '2017-06-20 01:57:07', NULL, NULL, 11, NULL, NULL, NULL, NULL, NULL, NULL),
 (23, NULL, NULL, 'Ticket 2 de Leo', 'Ticket 2 de Leo - Description', NULL, '2017-06-20 01:57:34', NULL, NULL, 11, NULL, NULL, NULL, NULL, NULL, NULL),
-(36, NULL, 1, 'Ticket 3 de Leo', 'Ticket 3 de Leo - Description', NULL, '2017-06-20 19:31:17', NULL, NULL, 11, 1, 1, 1, '1', NULL, NULL),
-(37, NULL, 2, 'Ticket 04 de Leo', 'Ticket 04 de Leo - Description', NULL, '2017-06-20 20:10:21', NULL, NULL, 11, 2, 2, 2, '22BB', NULL, NULL);
+(37, NULL, 2, 'Ticket 04 de Leo', 'Ticket 04 de Leo - Description', NULL, '2017-06-20 20:10:21', NULL, NULL, 11, 2, 2, 2, '22BB', NULL, NULL),
+(38, NULL, 1, 'Ticket 15 de Leo', 'Ticket 15 de Leo - Description', NULL, '2017-06-21 15:02:25', NULL, NULL, 11, 1, 1, 1, '1', NULL, NULL),
+(39, NULL, 2, 'Ticket 16 de Leo', 'Ticket 16 de Leo', NULL, '2017-06-21 17:14:51', NULL, NULL, 11, 2, 2, 2, '2', NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `type_service`
+-- Estructura de tabla para la tabla `type_service`
 --
 
 CREATE TABLE `type_service` (
@@ -217,17 +223,18 @@ CREATE TABLE `type_service` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='- Incident\n- Problem\n- Change';
 
 --
--- Dumping data for table `type_service`
+-- Volcado de datos para la tabla `type_service`
 --
 
 INSERT INTO `type_service` (`id_type_service`, `name`, `description`) VALUES
 (1, 'TYPE SERVICE A', 'TYPE SERVICE A'),
-(2, 'TYPE SERVICE B', 'TYPE SERVICE B');
+(2, 'TYPE SERVICE B', 'TYPE SERVICE B'),
+(4, 'TYPE SERVICE D', 'TYPE SERVICE D');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `type_user`
+-- Estructura de tabla para la tabla `type_user`
 --
 
 CREATE TABLE `type_user` (
@@ -237,7 +244,7 @@ CREATE TABLE `type_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `type_user`
+-- Volcado de datos para la tabla `type_user`
 --
 
 INSERT INTO `type_user` (`id_type_user`, `name`, `description`) VALUES
@@ -248,7 +255,7 @@ INSERT INTO `type_user` (`id_type_user`, `name`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Estructura de tabla para la tabla `users`
 --
 
 CREATE TABLE `users` (
@@ -264,7 +271,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `users`
+-- Volcado de datos para la tabla `users`
 --
 
 INSERT INTO `users` (`id_user`, `name`, `last_name`, `id_type_user`, `id_department`, `telephone`, `email`, `password`, `register_date`) VALUES
@@ -277,24 +284,24 @@ INSERT INTO `users` (`id_user`, `name`, `last_name`, `id_type_user`, `id_departm
 (11, 'leon', 'Martinez', 3, 2, NULL, 'leon.martinez@gmail.com', '$2y$12$l2H8XlpI25FWnWtoV4OWCOt/YH25YAVLIiHb.QCUv6eJ7FqkJpjnq', '2017-06-13 04:08:05');
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `category`
+-- Indices de la tabla `category`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`id_category`),
   ADD UNIQUE KEY `pk_category` (`id_category`);
 
 --
--- Indexes for table `department`
+-- Indices de la tabla `department`
 --
 ALTER TABLE `department`
   ADD PRIMARY KEY (`id_department`);
 
 --
--- Indexes for table `history`
+-- Indices de la tabla `history`
 --
 ALTER TABLE `history`
   ADD PRIMARY KEY (`id_history`),
@@ -302,31 +309,31 @@ ALTER TABLE `history`
   ADD KEY `idx_history_0` (`id_status`);
 
 --
--- Indexes for table `priority`
+-- Indices de la tabla `priority`
 --
 ALTER TABLE `priority`
   ADD PRIMARY KEY (`id_priority`);
 
 --
--- Indexes for table `sla`
+-- Indices de la tabla `sla`
 --
 ALTER TABLE `sla`
   ADD PRIMARY KEY (`id_sla`);
 
 --
--- Indexes for table `software_property`
+-- Indices de la tabla `software_property`
 --
 ALTER TABLE `software_property`
   ADD PRIMARY KEY (`id_software_property`);
 
 --
--- Indexes for table `status`
+-- Indices de la tabla `status`
 --
 ALTER TABLE `status`
   ADD PRIMARY KEY (`id_status`);
 
 --
--- Indexes for table `tickets`
+-- Indices de la tabla `tickets`
 --
 ALTER TABLE `tickets`
   ADD PRIMARY KEY (`id_ticket`),
@@ -340,19 +347,19 @@ ALTER TABLE `tickets`
   ADD KEY `idx_tickets_6` (`id_sla`);
 
 --
--- Indexes for table `type_service`
+-- Indices de la tabla `type_service`
 --
 ALTER TABLE `type_service`
   ADD PRIMARY KEY (`id_type_service`);
 
 --
--- Indexes for table `type_user`
+-- Indices de la tabla `type_user`
 --
 ALTER TABLE `type_user`
   ADD PRIMARY KEY (`id_type_user`);
 
 --
--- Indexes for table `users`
+-- Indices de la tabla `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id_user`),
@@ -360,77 +367,77 @@ ALTER TABLE `users`
   ADD KEY `idx_users_0` (`id_department`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `category`
+-- AUTO_INCREMENT de la tabla `category`
 --
 ALTER TABLE `category`
   MODIFY `id_category` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT for table `department`
+-- AUTO_INCREMENT de la tabla `department`
 --
 ALTER TABLE `department`
-  MODIFY `id_department` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_department` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
--- AUTO_INCREMENT for table `history`
+-- AUTO_INCREMENT de la tabla `history`
 --
 ALTER TABLE `history`
   MODIFY `id_history` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
--- AUTO_INCREMENT for table `priority`
+-- AUTO_INCREMENT de la tabla `priority`
 --
 ALTER TABLE `priority`
   MODIFY `id_priority` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT for table `sla`
+-- AUTO_INCREMENT de la tabla `sla`
 --
 ALTER TABLE `sla`
   MODIFY `id_sla` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT for table `software_property`
+-- AUTO_INCREMENT de la tabla `software_property`
 --
 ALTER TABLE `software_property`
-  MODIFY `id_software_property` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_software_property` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
--- AUTO_INCREMENT for table `status`
+-- AUTO_INCREMENT de la tabla `status`
 --
 ALTER TABLE `status`
   MODIFY `id_status` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT for table `tickets`
+-- AUTO_INCREMENT de la tabla `tickets`
 --
 ALTER TABLE `tickets`
-  MODIFY `id_ticket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id_ticket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 --
--- AUTO_INCREMENT for table `type_service`
+-- AUTO_INCREMENT de la tabla `type_service`
 --
 ALTER TABLE `type_service`
-  MODIFY `id_type_service` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_type_service` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
--- AUTO_INCREMENT for table `type_user`
+-- AUTO_INCREMENT de la tabla `type_user`
 --
 ALTER TABLE `type_user`
   MODIFY `id_type_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
--- Constraints for dumped tables
+-- Restricciones para tablas volcadas
 --
 
 --
--- Constraints for table `history`
+-- Filtros para la tabla `history`
 --
 ALTER TABLE `history`
   ADD CONSTRAINT `fk_history_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id_status`),
   ADD CONSTRAINT `fk_history_tickets` FOREIGN KEY (`id_ticket`) REFERENCES `tickets` (`id_ticket`);
 
 --
--- Constraints for table `tickets`
+-- Filtros para la tabla `tickets`
 --
 ALTER TABLE `tickets`
   ADD CONSTRAINT `fk_tickets_category` FOREIGN KEY (`id_category`) REFERENCES `category` (`id_category`),
@@ -443,7 +450,7 @@ ALTER TABLE `tickets`
   ADD CONSTRAINT `fk_tickets_users_requsted_by` FOREIGN KEY (`requested_by`) REFERENCES `users` (`id_user`);
 
 --
--- Constraints for table `users`
+-- Filtros para la tabla `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `fk_users_department` FOREIGN KEY (`id_department`) REFERENCES `department` (`id_department`),

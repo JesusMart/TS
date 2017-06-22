@@ -50,10 +50,11 @@
           <ul class="dropdown-menu">
             <li ><a href="<?php echo base_url();?>klf_users/register">Users<span class="sr-only">(current)</span></a></li>
             <li><a href="<?php echo base_url();?>klf_admin/index_department">Departments</a></li>
-            <li><a href="#">Soft.Property</a></li>
+            <li><a href="<?php echo base_url();?>klf_admin/index_software_property">Soft.Property</a></li>
+                                                          
             <li role="separator" class="divider"></li>
-            <li><a href="#">Types</a></li>
-			<li><a href="#">Categories</a></li>  
+            <li><a href="<?php echo base_url();?>klf_admin/index_type_service">Type Services</a></li>
+			<li><a href="<?php echo base_url();?>klf_admin/index_category">Categories</a></li>  
             <li><a href="#">Priorities</a></li>
 			<li><a href="#">Status</a></li>  			  
             <li role="separator" class="divider"></li>
