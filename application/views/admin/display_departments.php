@@ -1,24 +1,30 @@
-<div class="col-xs-9">	
+<div class="col-xs-9 modal-top">	
 
+<div id="display_form">
 
+	<h4><b><u>Department</u></b><br><br> <?php echo $department_data->name; ?></h4><br><br>
 
-<h1>Department: <?php echo $department_data->name; ?></h1>
+	<h4><b><u>Description</u></b><br><br>
 
-<h3>Description</h3>
+	<?php echo $department_data->description; ?>
+	</h4>
 
-<p><?php echo $department_data->description; ?></p>
-
+</div>
 
 </div>
 
 <div class="col-xs-3 pull-right">
-<ul class="list-group">
+
+<div class="list-group">
 		
+		<!--
 		<h4>Actions</h4>
+		-->
 
-		<li class="list-group-item"><a href="<?php echo base_url(); ?>klf_admin/edit_department/<?php echo $department_data->id_department; ?>">Edit Department</a></li> 
-		<li class="list-group-item"><a href="<?php echo base_url(); ?>klf_admin/delete_department/<?php echo $department_data->id_department; ?>">Delete Department</a></li> 
+		<a class="list-group-item glyphicon glyphicon-pencil" href="<?php echo base_url(); ?>klf_admin/edit_department/<?php echo $department_data->id_department; ?>">     Edit</a>
+		<a class="list-group-item glyphicon glyphicon-remove" href="<?php echo base_url(); ?>klf_admin/delete_department/<?php echo $department_data->id_department; ?>">     Delete</a>
 
 
-</ul>
+</div>
+
 </div>

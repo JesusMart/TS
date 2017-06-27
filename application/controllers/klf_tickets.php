@@ -91,7 +91,8 @@ class Klf_tickets extends CI_Controller {
 					'id_type_service'		=> $this->input->post('id_type_service'),
 					'id_category'			=> $this->input->post('id_category'),
 					'id_priority'			=> $this->input->post('id_priority'),
-					'attachements'			=> $this->input->post('attachements')
+					'attachements'			=> $this->input->post('attachements'),
+					'id_user_assigned_champion' => 1
 
 
 				);

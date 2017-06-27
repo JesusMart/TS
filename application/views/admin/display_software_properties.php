@@ -1,24 +1,29 @@
 <div class="col-xs-9">	
 
+<div id="display_form">
 
+	<h4><b><u>Software Property</u></b><br><br> <?php echo $software_property_data->name; ?></h4><br><br>
 
-<h1>Software Property: <?php echo $software_property_data->name; ?></h1>
+	<h4><b><u>Description</u></b><br><br>
 
-<h3>Description</h3>
+	<?php echo $software_property_data->description; ?>
+		
+	</h4>
 
-<p><?php echo $software_property_data->description; ?></p>
-
+</div>
 
 </div>
 
 <div class="col-xs-3 pull-right">
-<ul class="list-group">
+<div class="list-group">
 		
+		<!--
 		<h4>Actions</h4>
+		-->
 
-		<li class="list-group-item"><a href="<?php echo base_url(); ?>klf_admin/edit_software_property/<?php echo $software_property_data->id_software_property; ?>">Edit Software Property</a></li> 
-		<li class="list-group-item"><a href="<?php echo base_url(); ?>klf_admin/delete_software_property/<?php echo $software_property_data->id_software_property; ?>">Delete Software Property</a></li> 
+		<a class="list-group-item glyphicon glyphicon-pencil" href="<?php echo base_url(); ?>klf_admin/edit_software_property/<?php echo $software_property_data->id_software_property; ?>">     Edit</a>
+		<a class="list-group-item glyphicon glyphicon-remove" href="<?php echo base_url(); ?>klf_admin/delete_software_property/<?php echo $software_property_data->id_software_property; ?>">     Delete</a> 
 
 
-</ul>
+</div>
 </div>

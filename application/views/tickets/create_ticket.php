@@ -85,7 +85,7 @@
 	?>
 
 	
-	<?php echo form_dropdown('id_software_property', $options); ?>
+	<?php echo form_dropdown('id_software_property', $options, set_value('id_software_property', 0),'class="form-control"'); ?>
 	
 
 </div>
@@ -121,7 +121,8 @@
 	?>	
 
 	<!-- <?php //echo form_input($data); ?> -->
-	<?php echo form_dropdown('id_type_service', $options); ?>	
+	<?php echo form_dropdown('id_type_service', $options, set_value('id_type_service', 0),'class="form-control"'); ?>	
+
 
 </div>
 
@@ -153,7 +154,7 @@
 	?>		
 
 	<!-- <?php //echo form_input($data); ?> -->
-	<?php echo form_dropdown('id_category', $options); ?>	
+	<?php echo form_dropdown('id_category', $options, set_value('id_category', 0),'class="form-control"'); ?>	
 
 </div>
 
@@ -185,7 +186,7 @@
 	?>			
 
 	<!-- <?php //echo form_input($data); ?> -->
-	<?php echo form_dropdown('id_priority', $options); ?>	
+	<?php echo form_dropdown('id_priority', $options, set_value('id_type_service', 0),'class="form-control"'); ?>	
 
 </div>
 

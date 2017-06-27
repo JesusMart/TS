@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 22, 2017 at 08:58 PM
+-- Generation Time: Jun 27, 2017 at 08:37 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -85,11 +85,7 @@ CREATE TABLE `history` (
 --
 
 INSERT INTO `history` (`id_history`, `id_ticket`, `id_status`, `date_time`, `description`) VALUES
-(22, 9, 2, '2017-06-14 00:00:00', 'Charge'),
-(23, 8, 1, '2017-06-21 00:00:00', 'Received'),
-(24, 8, 2, '2017-06-19 00:00:00', 'Detailed'),
-(25, 8, 2, '2017-06-10 00:00:00', 'Contract'),
-(26, 8, 2, '2017-06-14 00:00:00', 'Refusnished');
+(1, 37, 1, '2017-06-15 00:00:00', 'Activity 1');
 
 -- --------------------------------------------------------
 
@@ -149,9 +145,11 @@ CREATE TABLE `software_property` (
 --
 
 INSERT INTO `software_property` (`id_software_property`, `name`, `description`) VALUES
-(1, 'SOFTWARE PROPERTY A', 'SOFTWARE PROPERTY A'),
+(1, 'Software Property A', 'Software Property A'),
 (2, 'SOFTWARE PROPERTY B', 'SOFTWARE PROPERTY B'),
-(4, 'SOFTWARE PROPERTY D', 'SOFTWARE PROPERTY D');
+(4, 'SOFTWARE PROPERTY D', 'SOFTWARE PROPERTY D'),
+(5, 'SOFTWARE PROPERTY C', 'SOFTWARE PROPERTY C'),
+(6, 'SOFTWARE PROPERTY E', 'SOFTWARE PROPERTY E');
 
 -- --------------------------------------------------------
 
@@ -171,7 +169,7 @@ CREATE TABLE `status` (
 
 INSERT INTO `status` (`id_status`, `name`, `description`) VALUES
 (1, 'OPEN', 'OPEN'),
-(2, 'IN PROGRESS', 'IN PROGRESS');
+(2, 'In Progress', 'In Progress');
 
 -- --------------------------------------------------------
 
@@ -185,7 +183,7 @@ CREATE TABLE `tickets` (
   `id_software_property` int(11) DEFAULT NULL,
   `title` varchar(255) DEFAULT NULL,
   `description` varchar(100) DEFAULT NULL,
-  `id_user(assigned champion)` int(11) DEFAULT NULL,
+  `id_user_assigned_champion` int(11) DEFAULT NULL,
   `timestamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `promise_date` datetime DEFAULT NULL,
   `completion_date` datetime DEFAULT NULL,
@@ -202,13 +200,28 @@ CREATE TABLE `tickets` (
 -- Dumping data for table `tickets`
 --
 
-INSERT INTO `tickets` (`id_ticket`, `id_status`, `id_software_property`, `title`, `description`, `id_user(assigned champion)`, `timestamp`, `promise_date`, `completion_date`, `requested_by`, `id_priority`, `id_type_service`, `id_category`, `attachements`, `solution`, `id_sla`) VALUES
-(8, NULL, NULL, 'Printer Error', 'The printer is not printing', NULL, '2017-06-15 17:48:22', NULL, NULL, 11, NULL, NULL, NULL, NULL, NULL, NULL),
-(9, NULL, NULL, 'Screen Damaged', 'The screen is black since yesterday', NULL, '2017-06-16 03:53:36', NULL, NULL, 9, NULL, NULL, NULL, NULL, NULL, NULL),
-(23, NULL, NULL, 'Ticket 2 de Leo', 'Ticket 2 de Leo - Description', NULL, '2017-06-20 01:57:34', NULL, NULL, 11, NULL, NULL, NULL, NULL, NULL, NULL),
-(37, NULL, 2, 'Ticket 04 de Leo', 'Ticket 04 de Leo - Description', NULL, '2017-06-20 20:10:21', NULL, NULL, 11, 2, 2, 2, '22BB', NULL, NULL),
+INSERT INTO `tickets` (`id_ticket`, `id_status`, `id_software_property`, `title`, `description`, `id_user_assigned_champion`, `timestamp`, `promise_date`, `completion_date`, `requested_by`, `id_priority`, `id_type_service`, `id_category`, `attachements`, `solution`, `id_sla`) VALUES
+(23, NULL, 1, 'Ticket 2 de Leo', 'Ticket 2 de Leo - Description', 10, '2017-06-20 01:57:34', NULL, NULL, 11, NULL, NULL, NULL, NULL, NULL, NULL),
+(37, NULL, 2, 'Ticket 04 de Leo', 'Ticket 04 de Leo - Description', 10, '2017-06-20 20:10:21', NULL, NULL, 11, 2, 2, 2, '22BB', NULL, NULL),
 (38, NULL, 1, 'Ticket 15 de Leo', 'Ticket 15 de Leo - Description', NULL, '2017-06-21 15:02:25', NULL, NULL, 11, 1, 1, 1, '1', NULL, NULL),
-(39, NULL, 2, 'Ticket 16 de Leo', 'Ticket 16 de Leo', NULL, '2017-06-21 17:14:51', NULL, NULL, 11, 2, 2, 2, '2', NULL, NULL);
+(56, NULL, 1, 'Ticket A de Leo', 'Ticket A de Leo', NULL, '2017-06-24 23:33:10', NULL, NULL, 11, 1, 1, 1, 'A', NULL, NULL),
+(57, NULL, 1, 'Ticket B de Leo', 'Ticket B de Leo', NULL, '2017-06-24 23:33:27', NULL, NULL, 11, 1, 1, 1, 'B', NULL, NULL),
+(58, NULL, 1, 'Ticket C de Leo', 'Ticket C de Leo', NULL, '2017-06-24 23:36:05', NULL, NULL, 11, 1, 1, 1, '2', NULL, NULL),
+(59, NULL, 1, 'Ticket D de Leo', 'Ticket D de Leo', NULL, '2017-06-24 23:36:21', NULL, NULL, 11, 1, 1, 1, '1', NULL, NULL),
+(60, NULL, 1, 'Ticket E de Leo', 'Ticket E de Leo', NULL, '2017-06-25 00:09:00', NULL, NULL, 11, 1, 1, 1, 'E', NULL, NULL),
+(61, NULL, 1, 'Ticket 1 de Nathy', 'Ticket 1 de Nathy', 10, '2017-06-27 18:47:49', NULL, NULL, 9, 1, 1, 1, '1', NULL, NULL),
+(62, NULL, 1, 'Ticket 2 de Nathy', 'Ticket 2 de Nathy', 10, '2017-06-27 18:48:39', NULL, NULL, 9, 1, 1, 1, '2', NULL, NULL),
+(63, NULL, 1, 'Ticket 3 de Nathy', 'Ticket 3 de Nathy', NULL, '2017-06-27 18:49:02', NULL, NULL, 9, 1, 1, 1, '2', NULL, NULL),
+(64, NULL, 1, 'Ticket 4 de Nathy', 'Ticket 4 de Nathy', NULL, '2017-06-27 18:49:20', NULL, NULL, 9, 1, 1, 1, '2', NULL, NULL),
+(65, NULL, 1, 'Ticket 5 de Nathy', 'Ticket 5 de Nathy', NULL, '2017-06-27 18:49:34', NULL, NULL, 9, 1, 1, 1, '1', NULL, NULL),
+(66, NULL, 1, 'Ticket 6 de Nathy', 'Ticket 6 de Nathy', NULL, '2017-06-27 18:49:46', NULL, NULL, 9, 1, 1, 1, '1', NULL, NULL),
+(67, NULL, 1, 'Ticket 7 de Nathy', 'Ticket 7 de Nathy', NULL, '2017-06-27 18:49:58', NULL, NULL, 9, 1, 1, 1, '1', NULL, NULL),
+(68, NULL, 1, 'Ticket 8 de Nathy', 'Ticket 8 de Nathy', NULL, '2017-06-27 18:50:11', NULL, NULL, 9, 1, 1, 1, '1', NULL, NULL),
+(69, NULL, 1, 'Ticket 9 de Nathy', 'Ticket 9 de Nathy', NULL, '2017-06-27 18:50:28', NULL, NULL, 9, 1, 1, 1, '1', NULL, NULL),
+(70, NULL, 1, 'Ticket 10 de Nathy', 'Ticket 10 de Nathy', NULL, '2017-06-27 18:50:42', NULL, NULL, 9, 1, 1, 1, '2', NULL, NULL),
+(71, NULL, 1, 'Ticket F de Leo', 'Ticket F de Leo', 1, '2017-06-27 19:51:33', NULL, NULL, 11, 1, 1, 1, '2', NULL, NULL),
+(72, NULL, 1, 'Ticket G de Leo', 'Ticket G de Leo', 1, '2017-06-27 20:02:53', NULL, NULL, 11, 1, 1, 1, '2', NULL, NULL),
+(73, NULL, 1, 'Ticket H de Leo', 'Ticket H de Leo', 1, '2017-06-27 20:03:29', NULL, NULL, 11, 1, 1, 1, '1', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -228,8 +241,7 @@ CREATE TABLE `type_service` (
 
 INSERT INTO `type_service` (`id_type_service`, `name`, `description`) VALUES
 (1, 'TYPE SERVICE A', 'TYPE SERVICE A'),
-(2, 'TYPE SERVICE B', 'TYPE SERVICE B'),
-(4, 'TYPE SERVICE D', 'TYPE SERVICE D');
+(2, 'TYPE SERVICE B', 'TYPE SERVICE B');
 
 -- --------------------------------------------------------
 
@@ -280,7 +292,7 @@ INSERT INTO `users` (`id_user`, `name`, `last_name`, `id_type_user`, `id_departm
 (7, 'peter20', 'williams', 3, 2, NULL, 'peter012@gmail.com', '123', '2017-06-12 20:20:32'),
 (8, 'leo', 'Martinez', 3, 2, NULL, 'leonardo.martinez@gmail.com', '123', '2017-06-12 20:55:40'),
 (9, 'Nathy', 'Martinez', 3, 2, NULL, 'nathalia.martinez@gmail.com', '$2y$12$M0g8VjsxyKdcSn.v/vs.qebu/S6NZZOWI1ZKWuZXyKnm0eBUJ0/F.', '2017-06-12 21:16:33'),
-(10, 'chucho', 'Reynoso', 3, 2, NULL, 'chucho', '$2y$12$ZCpztRIHF1KUB1j5YqapUupRIM.AWKIPFQh5JXX6C5GbD9NK.BDKK', '2017-06-13 03:29:21'),
+(10, 'chucho', 'Reynoso', 2, 2, NULL, 'chucho', '$2y$12$ZCpztRIHF1KUB1j5YqapUupRIM.AWKIPFQh5JXX6C5GbD9NK.BDKK', '2017-06-13 03:29:21'),
 (11, 'leon', 'Martinez', 3, 2, NULL, 'leon.martinez@gmail.com', '$2y$12$l2H8XlpI25FWnWtoV4OWCOt/YH25YAVLIiHb.QCUv6eJ7FqkJpjnq', '2017-06-13 04:08:05');
 
 --
@@ -339,7 +351,7 @@ ALTER TABLE `tickets`
   ADD PRIMARY KEY (`id_ticket`),
   ADD KEY `idx_tickets` (`id_status`),
   ADD KEY `idx_tickets_0` (`id_software_property`),
-  ADD KEY `idx_tickets_1` (`id_user(assigned champion)`),
+  ADD KEY `idx_tickets_1` (`id_user_assigned_champion`),
   ADD KEY `idx_tickets_2` (`requested_by`),
   ADD KEY `idx_tickets_3` (`id_priority`),
   ADD KEY `idx_tickets_4` (`id_type_service`),
@@ -374,7 +386,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id_category` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_category` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `department`
 --
@@ -384,12 +396,12 @@ ALTER TABLE `department`
 -- AUTO_INCREMENT for table `history`
 --
 ALTER TABLE `history`
-  MODIFY `id_history` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id_history` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `priority`
 --
 ALTER TABLE `priority`
-  MODIFY `id_priority` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_priority` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `sla`
 --
@@ -399,17 +411,17 @@ ALTER TABLE `sla`
 -- AUTO_INCREMENT for table `software_property`
 --
 ALTER TABLE `software_property`
-  MODIFY `id_software_property` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_software_property` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `status`
 --
 ALTER TABLE `status`
-  MODIFY `id_status` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_status` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `tickets`
 --
 ALTER TABLE `tickets`
-  MODIFY `id_ticket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id_ticket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 --
 -- AUTO_INCREMENT for table `type_service`
 --
@@ -446,7 +458,7 @@ ALTER TABLE `tickets`
   ADD CONSTRAINT `fk_tickets_software_property` FOREIGN KEY (`id_software_property`) REFERENCES `software_property` (`id_software_property`),
   ADD CONSTRAINT `fk_tickets_status` FOREIGN KEY (`id_status`) REFERENCES `status` (`id_status`),
   ADD CONSTRAINT `fk_tickets_type_service` FOREIGN KEY (`id_type_service`) REFERENCES `type_service` (`id_type_service`),
-  ADD CONSTRAINT `fk_tickets_users` FOREIGN KEY (`id_user(assigned champion)`) REFERENCES `users` (`id_user`),
+  ADD CONSTRAINT `fk_tickets_users` FOREIGN KEY (`id_user_assigned_champion`) REFERENCES `users` (`id_user`),
   ADD CONSTRAINT `fk_tickets_users_requsted_by` FOREIGN KEY (`requested_by`) REFERENCES `users` (`id_user`);
 
 --

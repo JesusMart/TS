@@ -18,7 +18,7 @@
 </p>
 
 
-
+<div id="display_form">
 <h1>Ticket Title: <?php echo $ticket_data->title; ?></h1>
 
 <p> Date Created: <?php echo $ticket_data->timestamp; ?></p>
@@ -27,6 +27,8 @@
 
 <p><?php echo $ticket_data->description; ?></p>
 
+</div>    
+    
 <h3>Active History</h3>
 
 <ul>

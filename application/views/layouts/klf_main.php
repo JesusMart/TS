@@ -45,6 +45,11 @@
 		  
 		<!-- dropdown -->  
 		  
+        
+        <?php if($this->session->userdata('username') == "Admin"): ?>  
+          
+
+          
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -65,6 +70,10 @@
 		  
           </ul> <!-- Maybe comment the line -->
         </li>   <!-- Maybe comment the line -->
+          
+        <?php endif; ?>
+          
+          
       </ul>
 <!--       <form class="navbar-form navbar-left">
         <div class="form-group">

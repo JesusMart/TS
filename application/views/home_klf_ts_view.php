@@ -36,8 +36,14 @@
 </p>
 
 <div class="jumbotron">
+
+	<!--
 	<h2 class="text-center">KLF-Ticketing System</h2>
+	-->
+
 </div>
+
+<!-- Tickets
 
 <?php if(isset($tickets)): ?>
 
@@ -66,7 +72,9 @@
 </div>
 </div>
 
+-->
 
+<!-- History of tasks
 <?php if(isset($history)): ?>
 
 <h1>History</h1>
@@ -106,3 +114,5 @@
 </table>
 
 <?php endif; ?>
+
+-->

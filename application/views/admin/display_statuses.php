@@ -1,24 +1,32 @@
 <div class="col-xs-9">	
 
+<div id="display_form">
+
+	<h4><b><u>Status</u></b><br><br> <?php echo $status_data->name; ?></h4><br><br>
+
+	<h4><b><u>Description</u></b><br><br>
+
+	<?php echo $status_data->description; ?>
+	</h4>
 
 
-<h1>Status: <?php echo $status_data->name; ?></h1>
 
-<h3>Description</h3>
-
-<p><?php echo $status_data->description; ?></p>
 
 
 </div>
 
+</div>
+
 <div class="col-xs-3 pull-right">
-<ul class="list-group">
+<div class="list-group">
 		
+		<!--
 		<h4>Actions</h4>
+		-->
 
-		<li class="list-group-item"><a href="<?php echo base_url(); ?>klf_admin/edit_status/<?php echo $status_data->id_status; ?>">Edit Status</a></li> 
-		<li class="list-group-item"><a href="<?php echo base_url(); ?>klf_admin/delete_status/<?php echo $status_data->id_status; ?>">Delete Status</a></li> 
+		<a class="list-group-item glyphicon glyphicon-pencil" href="<?php echo base_url(); ?>klf_admin/edit_status/<?php echo $status_data->id_status; ?>">     Edit</a>
+		<a class="list-group-item glyphicon glyphicon-remove" href="<?php echo base_url(); ?>klf_admin/delete_status/<?php echo $status_data->id_status; ?>">     Delete</a>
 
 
-</ul>
+</div>
 </div>

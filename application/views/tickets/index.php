@@ -35,8 +35,8 @@
 
 <a class="btn btn-primary pull-right" href="<?php echo base_url(); ?>klf_tickets/create">Create Ticket</a>
 
-
-<table class="table table-hover table-scrollable">
+<div id="table-scrollable">
+<table class="table table-hover">
 
 	<thead>
 		<tr>
@@ -59,8 +59,13 @@
 
 		<tr>	
 
+
+		<?php if(($this->session->userdata('user_id') == $ticket->requested_by) or  ($this->session->userdata('username') == "Admin") or ($this->session->userdata('user_id') == $ticket->id_user_assigned_champion)): ?>
+
 		<?php echo "<td><a href='". base_url() ."klf_tickets/display/". $ticket->id_ticket . "'>" . $ticket->title . "</a></td>"; ?>	
 		
+		<?php endif; ?>
+
 		<!--	
 		<?php //echo "<td>" . $ticket->description . "</td>"; ?>	
 		-->
@@ -75,3 +80,4 @@
 
 	</tbody>
 </table>
+</div>    

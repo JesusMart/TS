@@ -1,7 +1,7 @@
 
 
 
-<h2>Edit Type Service</h2>
+<h2>Edit</h2>
 
 <?php $attributes = array('id' => 'create_form', 'class' => 'form_horizontal'); ?>
 

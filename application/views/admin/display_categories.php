@@ -1,24 +1,28 @@
 <div class="col-xs-9">	
 
 
+<div id="display_form">
+	<h4><b><u>Category</u></b><br><br> <?php echo $category_data->name; ?></h4> <br><br>
 
-<h1>Category: <?php echo $category_data->name; ?></h1>
+	<h4><b><u>Description</u></b><br><br>
 
-<h3>Description</h3>
+	<?php echo $category_data->description; ?>
+	</h4>
 
-<p><?php echo $category_data->description; ?></p>
-
+</div>
 
 </div>
 
 <div class="col-xs-3 pull-right">
-<ul class="list-group">
+<div class="list-group actions" >
 		
+		<!--
 		<h4>Actions</h4>
+		-->
 
-	   <li class="list-group-item"><a href="<?php echo base_url(); ?>klf_admin/edit_category/<?php echo $category_data->id_category; ?>">Edit Category</a></li> 
-	   <li class="list-group-item"><a href="<?php echo base_url(); ?>klf_admin/delete_category/<?php echo $category_data->id_category; ?>">Delete category</a></li> 
+	   <a class="list-group-item glyphicon glyphicon-pencil" href="<?php echo base_url(); ?>klf_admin/edit_category/<?php echo $category_data->id_category; ?>">     Edit</a>
+	   <a class="list-group-item glyphicon glyphicon-remove" href="<?php echo base_url(); ?>klf_admin/delete_category/<?php echo $category_data->id_category; ?>">     Delete</a>
 
 
-</ul>
+</div>
 </div>

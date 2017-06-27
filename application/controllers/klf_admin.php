@@ -96,37 +96,58 @@ class Klf_admin extends CI_Controller {
 		$this->form_validation->set_rules('name', 'Name', 'trim|required');
 		$this->form_validation->set_rules('description', 'Description', 'trim|required');			
 
-		if($this->form_validation->run() == FALSE) {
-
-			$data['department_data'] = $this->klf_admin_model->get_departments_info($department_id);
-
-			$data['departments'] = $this->klf_admin_model->get_departments();
-			$data['left_view'] = "admin/index_departments";
-			
-			
-			$data['main_view'] = 'admin/edit_department';
-			$this->load->view('layouts/klf_main', $data);
-			
-		} else {
-
-			$data = array(
-
-					'name' 			=> $this->input->post('name'),
-					'description' 	=> $this->input->post('description')
+        
+        
+        if ( (($this->input->post('submit') !== null)  and   ($this->input->post('submit')   == "Update")) or
+             ($this->input->post('submit') == null)
+            )
+        
+        {
+           
+                if($this->form_validation->run() == FALSE) {
 
 
-				);
+                    $data['department_data'] = $this->klf_admin_model->get_departments_info($department_id);
 
-			if($this->klf_admin_model->edit_department($department_id, $data))  {
-
-				$this->session->set_flashdata('department_updated','Your Department has been updated Successfully!');
-
-				redirect("klf_admin/index_department");
+                    $data['departments'] = $this->klf_admin_model->get_departments();
+                    $data['left_view'] = "admin/index_departments";
 
 
-			}
+                    $data['main_view'] = 'admin/edit_department';
+                    $this->load->view('layouts/klf_main', $data);
 
-		}	
+
+
+                } else {
+
+
+
+                    $data = array(
+
+                            'name' 			=> $this->input->post('name'),
+                            'description' 	=> $this->input->post('description')
+
+
+                        );
+
+                    if($this->klf_admin_model->edit_department($department_id, $data))  {
+
+                        $this->session->set_flashdata('department_updated','Your Department has been updated Successfully!');
+
+                        redirect("klf_admin/index_department");
+
+
+                    }
+
+
+
+                }   /* else */
+        
+        }
+        else   /* Button Cancel  */
+            {
+              redirect("klf_admin/index_department");  
+            }
 
 	}
 

@@ -1,7 +1,7 @@
 
 
 
-<h2>Edit Category</h2>
+<h3><b>Edit</b></h3>
 
 <?php $attributes = array('id' => 'create_form', 'class' => 'form_horizontal'); ?>
 

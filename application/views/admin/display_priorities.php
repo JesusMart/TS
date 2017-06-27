@@ -1,24 +1,29 @@
 <div class="col-xs-9">	
 
+<div id="display_form">
 
+	<h4><b><u>Priority</u></b><br><br><?php echo $priority_data->name; ?></h4><br><br>
 
-<h1>Priority: <?php echo $priority_data->name; ?></h1>
+	<h4><b><u>Description</u></b><br><br>
 
-<h3>Description</h3>
+	<?php echo $priority_data->description; ?>
+		
+	</h4>
 
-<p><?php echo $priority_data->description; ?></p>
-
+</div>
 
 </div>
 
 <div class="col-xs-3 pull-right">
-<ul class="list-group">
+<div class="list-group">
 		
+		<!--
 		<h4>Actions</h4>
+		-->
 
-		<li class="list-group-item"><a href="<?php echo base_url(); ?>klf_admin/edit_priority/<?php echo $priority_data->id_priority; ?>">Edit Priority</a></li> 
-		<li class="list-group-item"><a href="<?php echo base_url(); ?>klf_admin/delete_priority/<?php echo $priority_data->id_priority; ?>">Delete Priority</a></li> 
+		<a class="list-group-item glyphicon glyphicon-pencil" href="<?php echo base_url(); ?>klf_admin/edit_priority/<?php echo $priority_data->id_priority; ?>">     Edit</a>
+		<a class="list-group-item glyphicon glyphicon-remove" href="<?php echo base_url(); ?>klf_admin/delete_priority/<?php echo $priority_data->id_priority; ?>">     Delete</a>
 
 
-</ul>
+</div>
 </div>

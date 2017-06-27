@@ -1,7 +1,7 @@
 
 
 
-<h2>Edit Department</h2>
+<h3><b>Edit</b></h3>
 
 <?php $attributes = array('id' => 'create_form', 'class' => 'form_horizontal'); ?>
 
@@ -61,7 +61,7 @@
 
 		$data = array(
 
-			'class' => 'btn btn-primary',
+			'class' => 'btn btn-primary btn-ok',
 			'name' => 'submit',
 			'value' => 'Update'
 
@@ -72,6 +72,27 @@
 	<?php echo form_submit($data); ?>
 
 </div>
+
+<div class="form-group">
+	
+
+	<?php
+
+		$data = array(
+
+			'class' => 'btn btn-primary',
+			'name' => 'submit',
+			'value' => 'Cancel'
+
+		);
+
+	?>
+
+	<?php echo form_submit($data); ?>
+
+</div>
+
+
 
 
 <?php echo form_close(); ?>

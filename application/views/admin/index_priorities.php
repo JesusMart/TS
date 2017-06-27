@@ -1,4 +1,6 @@
+<!--
 <h1>Priorities</h1>
+-->
 
 <p class="bg-success">
 	
@@ -29,13 +31,13 @@
 
 <a class="btn btn-primary pull-right" href="<?php echo base_url(); ?>klf_admin/create_priority">Create Priority</a>
 
-
-<table class="table table-hover table-scrollable">
+<div id="table-scrollable">
+<table class="table table-hover">
 
 	<thead>
 		<tr>
 			<th>
-				Title				
+				Priorities				
 			</th>			
 			
 			<!--
@@ -78,3 +80,4 @@
 
 	</tbody>
 </table>
+</div>    
